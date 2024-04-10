@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery</title>
+<style>
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .gallery img {
+        height: 200px; /* Altura fija para mantener la proporción */
+        width: auto; /* Ancho automático para conservar la proporción */
+        cursor: pointer;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+        transform: scale(1.1);
+    }
+</style>
+</head>
+<body>
+<div class="gallery">
+    <img src="{{ url_for('static', filename='bahrein.jpg') }}" alt="GP 1" onclick="showMessage('Has elegido Bahrein')">
+    <img src="{{ url_for('static', filename='jeddah.png') }}" alt="GP 2" onclick="showMessage('Has elegido Jeddah')">
+    <img src="https://via.placeholder.com/200" alt="Image 3" onclick="showMessage('Image 3 clicked')">
+    <img src="https://via.placeholder.com/200" alt="Image 4" onclick="showMessage('Image 4 clicked')">
+    <img src="https://via.placeholder.com/200" alt="Image 5" onclick="showMessage('Image 5 clicked')">
+    <img src="https://via.placeholder.com/200" alt="Image 6" onclick="showMessage('Image 6 clicked')">
+</div>
+
+<script>
+    function showMessage(message) {
+        alert(message);
+    }
+</script>
+</body>
+</html>
+
+</div>
+
+<script>
+    function showMessage(message) {
+        alert(message);
+    }
+</script>
+</body>
+</html>
