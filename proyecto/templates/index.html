@@ -6,16 +6,16 @@
 <title>Gallery</title>
 <style>
     .gallery {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas */
         gap: 20px;
+        justify-content: center;
         margin-top: 20px;
     }
 
     .gallery img {
-        height: 200px; /* Altura fija para mantener la proporción */
-        width: auto; /* Ancho automático para conservar la proporción */
+        width: 100%; /* Ancho del contenedor */
+        height: auto; /* Altura automática para mantener la proporción */
         cursor: pointer;
         border-radius: 10px;
         transition: transform 0.3s ease;
@@ -30,10 +30,10 @@
 <div class="gallery">
     <img src="{{ url_for('static', filename='bahrein.jpg') }}" alt="GP 1" onclick="showMessage('Has elegido Bahrein')">
     <img src="{{ url_for('static', filename='jeddah.png') }}" alt="GP 2" onclick="showMessage('Has elegido Jeddah')">
-    <img src="https://via.placeholder.com/200" alt="Image 3" onclick="showMessage('Image 3 clicked')">
-    <img src="https://via.placeholder.com/200" alt="Image 4" onclick="showMessage('Image 4 clicked')">
-    <img src="https://via.placeholder.com/200" alt="Image 5" onclick="showMessage('Image 5 clicked')">
-    <img src="https://via.placeholder.com/200" alt="Image 6" onclick="showMessage('Image 6 clicked')">
+    <img src="{{ url_for('static', filename='Albert Park.png') }}" alt="GP 3" onclick="showMessage('Has elegido Albert Park')">
+    <img src="{{ url_for('static', filename='Suzuka.png') }}" alt="GP 4" onclick="showMessage('Has elegido Suzuka')">
+    <img src="{{ url_for('static', filename='Interlagos.png') }}" alt="GP 5" onclick="showMessage('Has elegido Interlagos')">
+    <img src="{{ url_for('static', filename='SPA.png') }}" alt="GP 6" onclick="showMessage('Has elegido Spa-Francorchamps')">
 </div>
 
 <script>
@@ -44,12 +44,3 @@
 </body>
 </html>
 
-</div>
-
-<script>
-    function showMessage(message) {
-        alert(message);
-    }
-</script>
-</body>
-</html>
