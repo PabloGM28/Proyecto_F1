@@ -1,0 +1,43 @@
+{% extends "./layout.html" %}
+{% block title %}F1 Tyre Strategy{% endblock %}
+
+{% block body %}
+<header class="titulo"></header>
+<div class="container">
+    <div class="row my-1">
+        <nav class="navbar">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="static/LogoF1.png" alt="Logo" width="120" height="60" class="logoF1">
+                </a>
+                <form class="d-flex" role="search">
+                    <button class="btn btn-secondary btn-small" id="HOME" type="submit">HOME</button>
+                    <button class="btn btn-success btn-large" id="CONTINUE" type="submit">CONTINUE</button>
+                </form>
+            </div>
+          </nav>
+    </div>
+    <div class="row my-3">
+        <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 columna_izq" >
+            <div class="d-grid botones">
+                <button class="btn btn-dark btn-lg" type="button">ALBERT PARK</button>
+                <button class="btn btn-dark btn-lg" type="button">BAHRAIN</button>
+                <button class="btn btn-dark btn-lg" type="button">JEDDAH</button>
+                <button class="btn btn-dark btn-lg" type="button">INTERLAGOS</button>
+                <button class="btn btn-dark btn-lg" type="button">SPAH</button>
+                <button class="btn btn-dark btn-lg" type="button">SUZUKA</button>
+                <button class="btn btn-dark btn-lg" type="button">CREATE YOR OWN!</button>
+            </div>
+
+        </div>
+        <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
+            <img class="img-fluid imagen_portada" src="static/pitstop.png" >
+        <!-- </div>
+        <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 columna_dcha">
+            <button class="btn btn-dark btn_menu" type="button">CONTINUE</button>
+        </div> -->
+
+    </div>
+</div>
+
+{% endblock %}
