@@ -46,7 +46,7 @@ def objective(x, params):
         tire_type = tire_types[tire_type_index]
         
         # Calculate degradation for the tire type and laps
-        degradation = degradation(
+        degradation_value = degradation(
             tire_type,
             laps,
             params['track_temp'],
@@ -56,7 +56,7 @@ def objective(x, params):
             params['low_speed_turns'],
             params['wing_load']
         )
-        total_degradation += degradation
+        total_degradation += degradation_value
         
         # Track total laps used
         laps_used += laps
@@ -99,7 +99,7 @@ initial_guess = [0, race_laps // 3, 1, race_laps // 3, 2, race_laps // 3]
 bounds = [(0, 2), (1, race_laps)] * 3
 
 # Optimization using 'SLSQP' method
-result = minimize(objective, initial_guess, args=(params,), method='SLSQP', bounds=bounds)
+result = minimize(objective, initial_guess, args=(params), method='SLSQP', bounds=bounds)
 
 # Extracting optimal solution
 optimal_solution = result.x
