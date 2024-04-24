@@ -4,6 +4,8 @@ app = Flask(__name__)
 
 @app.route('/')
 
+#cambios en el main
+
 def index():
     return render_template('index.html')
 
