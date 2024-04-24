@@ -38,7 +38,7 @@ initial_guess = [0, 10, 5, 10, 15, 25, 30] * 3
 bounds = [(0, 2)] + [(1, None)] + [(0, None)] * 5 * 3
 
 # Optimization
-result = minimize(objective, initial_guess, method='SLSQP', bounds=bounds)
+result = minimize(objective('estrate'), initial_guess, method='SLSQP', bounds=bounds)
 
 # Extracting optimal solution
 optimal_solution = result.x
