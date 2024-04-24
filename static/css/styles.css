@@ -20,16 +20,16 @@ body{
     background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.titulo{
- background-image: url(static/TituloWEB2.png);
- background-position: center;
- background-repeat: no-repeat;
- background-size: cover;
- height: 40px;
+#Titulo{
+ height: 8vh;
+ width: 70vh;
+ justify-content:center;
+ align-items: center;
 }
 
 .container{
-    margin-top:10px;
+    height: 100%;
+    width: 100%;
 }
 
 .columna_izq{
@@ -50,4 +50,9 @@ body{
 
 #CONTINUE{
     border:black double 2px;
+}
+.img-fluid{
+    justify-content: center;
+    align-items: center;
+    margin-left: 100px;
 }
