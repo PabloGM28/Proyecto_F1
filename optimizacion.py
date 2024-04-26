@@ -8,17 +8,17 @@ def degradation(tire_type, laps, track_temp, air_temp, high_speed_turns, medium_
     if tire_type == 'soft':
         # Degradation for soft tires
         degradation_factor *= 0.1 * laps
-        degradation_factor *= (1.0 + 0.01 * high_speed_turns + 0.005 * medium_speed_turns + 0.002 * low_speed_turns)
+        degradation_factor *= (1.0 + 0.15 * high_speed_turns + 0.06 * medium_speed_turns + 0.01 * low_speed_turns)
         degradation_factor *= (1.0 + 0.002 * air_temp + 0.003 * track_temp)
         if wing_load == 'high':
-            degradation_factor *= 1.1  # Higher degradation with high wing load
+            degradation_factor *= 1.2  # Higher degradation with high wing load
     elif tire_type == 'medium':
         # Degradation for medium tires
         degradation_factor *= 0.05 * laps
-        degradation_factor *= (1.0 + 0.005 * high_speed_turns + 0.003 * medium_speed_turns + 0.001 * low_speed_turns)
+        degradation_factor *= (1.0 + 0.1 * high_speed_turns + 0.01 * medium_speed_turns + 0.00 * low_speed_turns)
         degradation_factor *= (1.0 + 0.001 * air_temp + 0.002 * track_temp)
         if wing_load == 'high':
-            degradation_factor *= 1.05
+            degradation_factor *= 1.1
     elif tire_type == 'hard':
         # Degradation for hard tires
         degradation_factor *= 0.03 * laps
