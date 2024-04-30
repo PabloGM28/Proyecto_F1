@@ -57,3 +57,18 @@ body{
     border: black solid 3px;
     text-align: center;
 }
+.card{
+    width: flex;
+    height:67vh ;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(81,79,82,1) 100%);
+    border: black solid 3px;
+    color:white;
+}
+#text-center{
+
+    font-size: 30px;
+    color: black;
+    text-align: center;
+    justify-content: center;
+}
