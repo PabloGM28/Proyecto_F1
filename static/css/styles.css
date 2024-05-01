@@ -59,16 +59,43 @@ body{
 }
 .card{
     width: flex;
-    height:67vh ;
+    height:flex ;
     background: rgb(0,0,0);
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(81,79,82,1) 100%);
     border: black solid 3px;
     color:white;
 }
-#text-center{
-
+#text-weather{
     font-size: 30px;
     color: black;
     text-align: center;
     justify-content: center;
+}
+#text-tyres{
+    font-size: 30px;
+    color: black;
+    text-align: center;
+    justify-content: center;
+}
+
+#card{
+    width:60%;
+    height: 100%;
+}
+#row_card{
+    margin-left: 10vh;
+}
+#placeholder_text{
+    text-align: center;
+    border: 3px solid black;
+}
+#col_placeholder_I{
+    margin-left: 30vh;
+}
+ul {
+    list-style-type: none; /* Elimina los estilos de viñeta */
+    padding: 0; /* Elimina el relleno predeterminado de la lista */
+}
+li {
+    margin-left: 20px; /* Establece un margen izquierdo personalizado */
 }
