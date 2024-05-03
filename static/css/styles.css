@@ -92,10 +92,13 @@ body{
 #col_placeholder_I{
     margin-left: 30vh;
 }
-ul {
-    list-style-type: none; /* Elimina los estilos de viñeta */
-    padding: 0; /* Elimina el relleno predeterminado de la lista */
+#card-img-top{
+    height: 40vh;
+    width: 100%;
 }
-li {
-    margin-left: 20px; /* Establece un margen izquierdo personalizado */
+#placeholder_text_laps{
+    text-align: center;
+    border: 3px solid black;
+    width: 20vh;
+    margin-left: 36%;
 }
