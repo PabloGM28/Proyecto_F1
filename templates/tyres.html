@@ -1,0 +1,85 @@
+{% extends "./layout.html" %}
+{% block title %}F1 Tyre Strategy{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 my-2">
+            <div style="display: flex; justify-content: center;">
+                <img src="static/Tyre_Selector.png" alt="Descripción de la imagen" class="img-fluid" id="TituloWeb">
+        </div>        
+    </div>
+    <div class="row my-2">
+      <p id="text-tyres">PICK THREE TYRES</p>
+    </div>
+    <div class="row">
+        <nav class="navbar">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="static/LogoF1.png" alt="Logo" width="120" height="60" class="logoF1">
+                </a>
+
+                <form class="d-flex" role="search">
+                    <button class="btn btn-danger btn-large" id="HOME">HOME</button>
+                    <button class="btn btn-secondary btn-small" id="HOME"><</button>
+                    <button class="btn btn-success btn-small" id="CONTINUE" type="submit">></button>
+                </form>
+            </div>
+          </nav>
+    </div>
+    <div class="container text-center">
+        <div class="row row-cols-5">
+          <div class="col">
+            <div class="card">
+                <img src="static\SOFT.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">SOFT</h5>
+                  <p class="card-text">Offers high grip and excellent performance for a limited duration, commonly utilized for short stints during races to gain track position or set fast lap times.</p>
+                  <button type="button" class="btn btn-success active" data-bs-toggle="button" aria-pressed="true">SELECT</button>
+                </div>
+              </div>
+          </div>
+          <div class="col">
+            <div class="card">
+                <img src="static\Medium.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">MEDIUM</h5>
+                  <p class="card-text">Balances grip with longevity, providing consistent performance over a moderate distance, often chosen for longer stints during races to manage tire wear and strategy.</p>
+                  <button type="button" class="btn btn-success active" data-bs-toggle="button" aria-pressed="true">SELECT</button>
+                </div>
+              </div>
+          </div>
+          <div class="col">
+            <div class="card">
+                <img src="static\Hard.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">HARD</h5>
+                  <p class="card-text">Prioritizes durability over outright performance, suitable for extended periods on track, particularly on circuits with abrasive surfaces or in hot conditions.</p>
+                  <button type="button" class="btn btn-success active" data-bs-toggle="button" aria-pressed="true">SELECT</button>
+                </div>
+              </div>
+          </div>
+          <div class="col">
+            <div class="card">
+                <img src="static\Intermediate.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">INTERMEDIATE</h5>
+                  <p class="card-text">Equipped with grooves to provide traction on damp or wet tracks, ideal for transitioning conditions when rain is light or the racing line is not fully saturated.</p>
+                  <button type="button" class="btn btn-success active" data-bs-toggle="button" aria-pressed="true">SELECT</button>
+                </div>
+              </div>
+          </div>
+          <div class="col">
+            <div class="card">
+                <img src="static\WET.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">WET</h5>
+                  <p class="card-text"> Designed with deep grooves and a softer compound to maintain grip in heavy rain, crucial for safety and control during downpour conditions, enabling drivers to navigate flooded tracks.</p>
+                  <button type="button" class="btn btn-success active" data-bs-toggle="button" aria-pressed="true">SELECT</button>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+{% endblock %}
