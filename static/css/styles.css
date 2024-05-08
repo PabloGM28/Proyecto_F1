@@ -1,17 +1,17 @@
 .imagen_portada{
     height: 100%;
     border-radius: 2%;
-    border: black solid 5px;
+    border: black solid 3px;
     width: 100%;
     justify-content: center;
     align-items: center;
+    margin-left: 5px;
 
 }
 .botones{
     height:100%;
     justify-content: center;
     align-items: center;
-    color:white;
     width: 100%;
 }
 body{
@@ -20,25 +20,18 @@ body{
     background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.titulo{
- background-image: url(static/TituloWEB2.png);
- background-position: center;
- background-repeat: no-repeat;
- background-size: cover;
- height: 40px;
+#Titulo{
+ height: 8vh;
+ width: 70vh;
+ justify-content:center;
+ align-items: center;
 }
 
 .container{
-    margin-top:10px;
+    height: 100%;
+    width: 100%;
 }
 
-.columna_izq{
-    background: #000000;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    border: black 5px solid;   
-    border-radius: 10px; 
-}
 .logoF1{
     margin-left: 40px;
 }
@@ -50,4 +43,62 @@ body{
 
 #CONTINUE{
     border:black double 2px;
+}
+
+#TituloWeb{
+    width: 65%;
+    height: 65%;
+    justify-content: center;
+}
+.btn-main{
+    color: white;
+    width: 100%;
+    height: 100%;
+    border: black solid 3px;
+    text-align: center;
+}
+.card{
+    width: flex;
+    height:flex ;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(81,79,82,1) 100%);
+    border: black solid 3px;
+    color:white;
+}
+#text-weather{
+    font-size: 30px;
+    color: black;
+    text-align: center;
+    justify-content: center;
+}
+#text-tyres{
+    font-size: 30px;
+    color: black;
+    text-align: center;
+    justify-content: center;
+}
+
+#card{
+    width:60%;
+    height: 100%;
+}
+#row_card{
+    margin-left: 10vh;
+}
+#placeholder_text{
+    text-align: center;
+    border: 3px solid black;
+}
+#col_placeholder_I{
+    margin-left: 30vh;
+}
+#card-img-top{
+    height: 40vh;
+    width: 100%;
+}
+#placeholder_text_laps{
+    text-align: center;
+    border: 3px solid black;
+    width: 20vh;
+    margin-left: 36%;
 }

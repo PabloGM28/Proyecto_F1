@@ -2,42 +2,59 @@
 {% block title %}F1 Tyre Strategy{% endblock %}
 
 {% block body %}
-<header class="titulo"></header>
 <div class="container">
-    <div class="row my-1">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 my-3">
+            <div style="display: flex; justify-content: center;">
+                <img src="static/TituloWeb.png" alt="Descripción de la imagen" class="img-fluid" id="TituloWeb"> <!-- Cambia el valor de width según sea necesario -->
+            </div>
+        </div>        
+    </div>
+    <div class="row">
         <nav class="navbar">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                     <img src="static/LogoF1.png" alt="Logo" width="120" height="60" class="logoF1">
                 </a>
                 <form class="d-flex" role="search">
-                    <button class="btn btn-secondary btn-small" id="HOME" type="submit">HOME</button>
+                    <button class="btn btn-secondary btn-small" id="HOME" onclick="changeImage('static/pitstop.png', 'HOME')">HOME</button>
                     <button class="btn btn-success btn-large" id="CONTINUE" type="submit">CONTINUE</button>
                 </form>
             </div>
           </nav>
     </div>
-    <div class="row my-3">
-        <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 columna_izq" >
-            <div class="d-grid botones">
-                <button class="btn btn-dark btn-lg" type="button">ALBERT PARK</button>
-                <button class="btn btn-dark btn-lg" type="button">BAHRAIN</button>
-                <button class="btn btn-dark btn-lg" type="button">JEDDAH</button>
-                <button class="btn btn-dark btn-lg" type="button">INTERLAGOS</button>
-                <button class="btn btn-dark btn-lg" type="button">SPAH</button>
-                <button class="btn btn-dark btn-lg" type="button">SUZUKA</button>
-                <button class="btn btn-dark btn-lg" type="button">CREATE YOR OWN!</button>
-            </div>
+    <div class="row my-1">
+        <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2" >
+            <div class="btn-group-vertical botones" role="group" aria-label="Vertical radio toggle button group">
+                <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1" autocomplete="off" checked>
+                <label class="btn btn-main btn-dark btn-lg" for="vbtn-radio1" onclick="changeImage('static/Albert Park.png', 'ALBERT PARK')">ALBERT PARK</label>
+                <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio2" autocomplete="off">
+                <label class="btn btn-main btn-dark btn-lg" for="vbtn-radio2" onclick="changeImage('static/bahrein.png', 'BAHRAIN')" >BAHRAIN</label>
+                <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio3" autocomplete="off">
+                <label class="btn btn-main btn-dark btn-lg" for="vbtn-radio3" onclick="changeImage('static/jeddah.png', 'JEDDAH')">JEDDAH</label>
+                <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio4" autocomplete="off" checked>
+                <label class="btn btn-main btn-dark btn-lg" for="vbtn-radio4" onclick="changeImage('static/interlagos.png', 'INTERLAGOS')">INTERLAGOS</label>
+                <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio5" autocomplete="off">
+                <label class="btn btn-main btn-dark btn-lg" for="vbtn-radio5" onclick="changeImage('static/SPA.png', 'SPA')">SPAH</label>
+                <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio6" autocomplete="off">
+                <label class="btn btn-main btn-dark btn-lg" for="vbtn-radio6" onclick="changeImage('static/Suzuka.png', 'SUZUKA')">SUZUKA</label>
+                <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio7" autocomplete="off">
+                <label class="btn btn-main btn-dark btn-lg" for="vbtn-radio7" onclick="changeImage('static/yourowncircuit.png', 'YOUR OWN CIRCUIT')">CREATE YOUR OWN!</label>
+              </div>
 
         </div>
         <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
-            <img class="img-fluid imagen_portada" src="static/pitstop.png" >
-        <!-- </div>
-        <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 columna_dcha">
-            <button class="btn btn-dark btn_menu" type="button">CONTINUE</button>
-        </div> -->
-
+            <img class="img-fluid imagen_portada" id="image-display" src="static/pitstop.png" >
+        </div>
     </div>
 </div>
+
+<script>
+    // Function to change image and title when a button is clicked
+    function changeImage(imageName, imageTitle) {
+        document.getElementById("image-display").src = imageName;
+        document.getElementById("image-title").innerText = imageTitle; /* Set the title */
+    }
+</script>
 
 {% endblock %}
