@@ -1,12 +1,12 @@
 {% extends "./layout.html" %}
-{% block title %}F1 Tyre Strategy{% endblock %}
+{% block title %}Weather{% endblock %}
 
 {% block body %}
 <div class="container text-center fluid">
   <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 my-2">
             <div style="display: flex; justify-content: center;">
-                <img src="static/Tyre_Selector.png" alt="Descripción de la imagen" class="img-fluid" id="TituloWeb">
+                <img src="static\WEATHER.png" alt="Descripción de la imagen" class="img-fluid" id="TituloWeb">
         </div>        
     </div>
   <div class="row my-2">
@@ -20,9 +20,9 @@
                 </a>
 
                 <form class="d-flex" role="search">
-                    <button class="btn btn-danger btn-large" id="HOME">HOME</button>
-                    <button class="btn btn-secondary btn-small" id="HOME"><</button>
-                    <button class="btn btn-success btn-small" id="CONTINUE" type="submit">></button>
+                    <a id="HOME" class="btn btn-danger btn-large" href="{{ url_for('index') }}">HOME</a>
+                    <a class="btn btn-secondary btn-small" href="{{ url_for('tyres') }}" id="HOME"><</a>
+                    <a class="btn btn-success btn-small" href="{{ url_for('length') }}" id="HOME">></a>
                 </form>
             </div>
         </nav>
@@ -46,37 +46,22 @@
         </div>
       </div>
     </div>
-    <div class="container text-center">
-      <div class="row row-cols-2">
-        <div class="col">
-          <div class="card">
-              <img src="static\double_arrow.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">MEDIUM</h5>
-                <p class="card-text">
-                  <li>Balances grip and speed for mixed track layouts</li>
-                  <li>Versatile performance across different sections of the track</li>
-                  <li>Moderate stability and agility</li>
-                </p>
-                <button type="button" class="btn btn-success active" data-bs-toggle="button" aria-pressed="true">SELECT</button>
-              </div>
-            </div>
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 my-2">
+      <div class="card" id="card">
+        <img src="static\rainy.png" class="card-img-top"  alt="...">
+        <div class="card-body">
+          <h5 class="card-title">RAINY</h5>
+          <button type="button" class="btn btn-success active" data-bs-toggle="button" aria-pressed="true">SELECT</button>
         </div>
-        <div class="col">
-          <div class="card">
-              <img src="static\triple_arrow.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">HIGH</h5>
-                <p class="card-text">
-                  <li>Maximizes straight-line speed and acceleration</li>
-                  <li>Minimizes drag for top-end velocity</li>
-                  <li>Suitable for tracks with long straights and few tight corners</li>
-                </p>
-                <button type="button" class="btn btn-success active" data-bs-toggle="button" aria-pressed="true">SELECT</button>
-              </div>
-            </div>
-        </div>
+      </div>
+    </div>
+    <div class="row my-3">
+      <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3" id="col_placeholder_I">
+          <input type="text" class="form-control" id="placeholder_text" placeholder="ASPHALT TEMPERATURE(º)" aria-label="ASPHALT TEMPERATURE(º)">
+      </div>
+      <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+        <input type="text" class="form-control" id="placeholder_text" placeholder="AMBIENT TEMPERATURE(º)" aria-label="AMBIENT TEMPERATURE(º)">
+      </div>
     </div>
 </div>
-
 {% endblock %}

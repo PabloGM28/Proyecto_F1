@@ -1,5 +1,5 @@
 {% extends "./layout.html" %}
-{% block title %}F1 Tyre Strategy{% endblock %}
+{% block title %}Length{% endblock %}
 
 {% block body %}
 <div class="container text-center fluid">
@@ -20,9 +20,9 @@
                 </a>
 
                 <form class="d-flex" role="search">
-                    <button class="btn btn-danger btn-large" id="HOME">HOME</button>
-                    <button class="btn btn-secondary btn-small" id="HOME"><</button>
-                    <button class="btn btn-success btn-small" id="CONTINUE" type="submit">></button>
+                    <a id="HOME" class="btn btn-danger btn-large" href="{{ url_for('index') }}">HOME</a>
+                    <a class="btn btn-secondary btn-small" href="{{ url_for('weather') }}" id="HOME"><</a>
+                    <a class="btn btn-success btn-small" href="{{ url_for('downforce') }}" id="HOME">></a>
                 </form>
             </div>
         </nav>

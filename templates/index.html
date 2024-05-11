@@ -17,8 +17,8 @@
                     <img src="static/LogoF1.png" alt="Logo" width="120" height="60" class="logoF1">
                 </a>
                 <form class="d-flex" role="search">
-                    <button class="btn btn-secondary btn-small" id="HOME" onclick="changeImage('static/pitstop.png', 'HOME')">HOME</button>
-                    <button class="btn btn-success btn-large" id="CONTINUE" type="submit">CONTINUE</button>
+                    <a id="HOME" class="btn btn-danger btn-large" href="{{ url_for('index') }}">HOME</a>
+                    <a id="HOME" class="btn btn-success btn-large" href="{{ url_for('tyres') }}">CONTINUE</a>
                 </form>
             </div>
           </nav>
