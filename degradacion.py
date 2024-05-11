@@ -8,16 +8,10 @@
 
 #parametros = {"track_temp", "air_temp", "high_speed_turns", "medium_speed_turns", "low_speed_turns", "wing_load", "length", "abrassion"}
 
-<<<<<<< Updated upstream
 def degradation(tire_type, track_temp, air_temp, high_speed_turns, medium_speed_turns, low_speed_turns, wing_load, length, abrassion):
     # Define degradation factor for each tire type based on input parameters
     degradation_factor = 1.0
 
-=======
-def degradation(track_temp, air_temp, high_speed_turns, medium_speed_turns, low_speed_turns, wing_load, length, abrassion):
-    # Define degradation factor for each tire type based on input parameters
-    
->>>>>>> Stashed changes
     ######### Degradacion por compuesto #########
     # Duro, medio, blando
     degradation_factor = [1.5, 1.3, 1.15]
