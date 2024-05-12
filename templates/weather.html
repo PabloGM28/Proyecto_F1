@@ -19,49 +19,83 @@
                     <img src="static/LogoF1.png" alt="Logo" width="120" height="60" class="logoF1">
                 </a>
 
-                <form class="d-flex" role="search">
-                    <a id="HOME" class="btn btn-danger btn-large" href="{{ url_for('index') }}">HOME</a>
-                    <a class="btn btn-secondary btn-small" href="{{ url_for('tyres') }}" id="HOME"><</a>
-                    <a class="btn btn-success btn-small" href="{{ url_for('length') }}" id="HOME">></a>
+                <form class="d-flex" role="search" id="weather_form" action="{{ url_for('process_weather_selection_and_redirect') }}" method="post">
+                    <a class="btn btn-danger btn-large" id="HOME" href="{{ url_for('index') }}">HOME</a>
+                    <a class="btn btn-secondary btn-small" id="HOME" href="{{ url_for('tyres') }}"><</a>
+                    <button type="submit" id="HOME" class="btn btn-success btn-small" onclick="submitWeatherSelection()">></button>
+                    <input type="hidden" id="weather_selection" name="weather_selection" value="">
+                    <input type="hidden" id="asphalt_temp_hidden" name="asphalt_temp" value="">
+                    <input type="hidden" id="ambient_temp_hidden" name="ambient_temp" value="">
                 </form>
             </div>
         </nav>
   </div>
   <div class="row my-2" id="row_card">
     <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 my-2">
-      <div class="card" id="card">
+      <div class="card" style="width: 18rem;">
         <img src="static\sun.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">SUNNY</h5>
-          <button type="button" class="btn btn-success active" data-bs-toggle="button" aria-pressed="true">SELECT</button>
+          <div class="boton">
+            <input type="checkbox" id="btn-switch-1" onchange="updateWeatherSelection()">
+            <label for="btn-switch-1" class="lbl-switch"></label> 
+          </div>
         </div>
       </div>
     </div>
     <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 my-2">
-      <div class="card" id="card">
+      <div class="card" style="width: 18rem;">
         <img src="static\cloudy.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">CLOUDY</h5>
-          <button type="button" class="btn btn-success active" data-bs-toggle="button" aria-pressed="true">SELECT</button>
+          <div class="boton">
+            <input type="checkbox" id="btn-switch-2" onchange="updateWeatherSelection()">
+            <label for="btn-switch-2" class="lbl-switch"></label> 
+          </div>
         </div>
       </div>
     </div>
     <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 my-2">
-      <div class="card" id="card">
+      <div class="card" style="width: 18rem;">
         <img src="static\rainy.png" class="card-img-top"  alt="...">
         <div class="card-body">
           <h5 class="card-title">RAINY</h5>
-          <button type="button" class="btn btn-success active" data-bs-toggle="button" aria-pressed="true">SELECT</button>
+          <div class="boton">
+            <input type="checkbox" id="btn-switch-3" onchange="updateWeatherSelection()">
+            <label for="btn-switch-3" class="lbl-switch"></label> 
+          </div>
         </div>
       </div>
     </div>
     <div class="row my-3">
       <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3" id="col_placeholder_I">
-          <input type="text" class="form-control" id="placeholder_text" placeholder="ASPHALT TEMPERATURE(º)" aria-label="ASPHALT TEMPERATURE(º)">
+          <input type="text" class="form-control" id="asphalt_temp" placeholder="ASPHALT TEMPERATURE(º)" aria-label="ASPHALT TEMPERATURE(º)">
       </div>
       <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
-        <input type="text" class="form-control" id="placeholder_text" placeholder="AMBIENT TEMPERATURE(º)" aria-label="AMBIENT TEMPERATURE(º)">
+        <input type="text" class="form-control" id="ambient_temp" placeholder="AMBIENT TEMPERATURE(º)" aria-label="AMBIENT TEMPERATURE(º)">
       </div>
     </div>
 </div>
+
+<script>
+function updateWeatherSelection() {
+  var selectedWeather = [];
+  var checkboxes = document.querySelectorAll('.boton input[type="checkbox"]');
+  checkboxes.forEach(function(checkbox) {
+    if (checkbox.checked) {
+      selectedWeather.push(checkbox.parentNode.parentNode.querySelector('.card-title').textContent);
+    }
+  });
+  // Guardar la selección de tiempo y temperaturas en campos ocultos
+  document.getElementById('weather_selection').value = selectedWeather.join(',');
+  document.getElementById('asphalt_temp_hidden').value = document.getElementById('asphalt_temp').value;
+  document.getElementById('ambient_temp_hidden').value = document.getElementById('ambient_temp').value;
+}
+
+function submitWeatherSelection() {
+  updateWeatherSelection();
+  // Enviar la selección de tiempo y temperaturas al servidor
+  document.getElementById('weather_form').submit();
+}
+</script>
 {% endblock %}

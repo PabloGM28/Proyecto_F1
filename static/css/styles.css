@@ -102,3 +102,74 @@ body{
     width: 20vh;
     margin-left: 36%;
 }
+
+.lbl-switch{
+    display: inline-block;
+    width: 55px;
+    height: 30px;
+    background: gray;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+#btn-switch-1:checked~ .lbl-switch{
+    background: red; 
+}
+#btn-switch-2:checked~ .lbl-switch{
+    background: red; 
+}
+#btn-switch-3:checked~ .lbl-switch{
+    background:red; 
+}
+#btn-switch-4:checked~ .lbl-switch{
+    background: red; 
+}
+#btn-switch-5:checked~ .lbl-switch{
+    background: red; 
+}
+.lbl-switch:after{
+    position: absolute;
+    content: '';
+    width: 22px;
+    height: 22px;
+    background: #fff;
+    border-radius: 100px;
+    top:4px;
+    left: 5px;
+    transition: 0.3s;
+}
+
+#btn-switch-1:checked~ .lbl-switch:after{
+    left:28px 
+}
+#btn-switch-2:checked~ .lbl-switch:after{
+    left:28px 
+}
+#btn-switch-3:checked~ .lbl-switch:after{
+    left:28px 
+}#btn-switch-4:checked~ .lbl-switch:after{
+    left:28px 
+}
+#btn-switch-5:checked~ .lbl-switch:after{
+    left:28px 
+}
+
+#btn-switch-1{
+    display: none;
+}
+#btn-switch-2{
+    display: none;
+}#btn-switch-3{
+    display: none;
+}
+#btn-switch-4{
+    display: none;
+}
+#btn-switch-5{
+    display: none;
+}
+
+
+input{
+    text-align: center;
+}
