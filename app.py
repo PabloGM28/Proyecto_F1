@@ -93,7 +93,7 @@ def process_length_and_redirect():
         length_km = request.form['length_km']
         laps = request.form['laps']
         # Imprimir la selección del usuario
-        print("Longitud del circuito:", length_km)
+        print("Longitud del circuito:", length_km, "Km")
         print("Número de vueltas:", laps)
         # Redirigir al usuario a la página "downforce.html"
         return redirect(url_for('downforce'))
@@ -106,7 +106,7 @@ def process_downforce_and_redirect():
         # Obtener la selección de downforce del formulario
         downforce_selection = request.form.get('downforce_selection')
         # Imprimir la selección de downforce (para verificar en la consola)
-        print("Selección de downforce:", downforce_selection)
+        print("Selección de downforce:",downforce_selection)
         # Redirigir al usuario a la página "corners"
         return redirect(url_for('deterioration'))
 
@@ -132,12 +132,11 @@ def process_corners_and_redirect():
         corner_medium = request.form['corner_medium']
         corner_fast = request.form['corner_fast']
         # Imprimir la selección de esquinas (para verificar en la consola)
-        print("Curvas lentas:", corner_slow )
-        print("Curvas medias:", corner_medium )
-        print("Curvas rápidas:", corner_fast )
+        print("Curvas lentas:",corner_slow )
+        print("Curvas medias:",corner_medium )
+        print("Curvas rápidas:",corner_fast )
         # Redirigir al usuario a la siguiente página
         return redirect(url_for('final_strategy'))
-    
-    
+        
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
