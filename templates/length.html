@@ -19,10 +19,12 @@
                     <img src="static/LogoF1.png" alt="Logo" width="120" height="60" class="logoF1">
                 </a>
 
-                <form class="d-flex" role="search">
+                <form class="d-flex" role="search" id="length_form" action="{{ url_for('process_length_and_redirect') }}" method="post">
                     <a id="HOME" class="btn btn-danger btn-large" href="{{ url_for('index') }}">HOME</a>
-                    <a class="btn btn-secondary btn-small" href="{{ url_for('weather') }}" id="HOME"><</a>
-                    <a class="btn btn-success btn-small" href="{{ url_for('downforce') }}" id="HOME">></a>
+                    <a class="btn btn-secondary btn-small" id="HOME" href="{{ url_for('weather') }}"><</a>
+                    <button type="submit" id="HOME" class="btn btn-success btn-small" onclick="submitLengthData()">></button>
+                    <input type="hidden" id="length_km" name="length_km" value="">
+                    <input type="hidden" id="laps" name="laps" value="">
                 </form>
             </div>
         </nav>
@@ -36,7 +38,7 @@
               <h5 class="card-title">LENGTH</h5>
             </div>
             <div class="card-footer">
-                <input type="text" class="form-control" id="placeholder_text_laps" placeholder="LENGTH (KM)" aria-label="LENGTH">
+                <input type="text" class="form-control" id="length_input" placeholder="LENGTH (KM)" aria-label="LENGTH">
             </div>
           </div>
       </div>
@@ -47,10 +49,23 @@
               <h5 class="card-title">LAPS</h5>
             </div>
             <div class="card-footer">
-                <input type="text" class="form-control" id="placeholder_text_laps" placeholder="LAPS" aria-label="LAPS">
+                <input type="text" class="form-control" id="laps_input" placeholder="LAPS" aria-label="LAPS">
             </div>
           </div>
       </div>
 </div>
 
+<script>
+  function submitLengthData() {
+    var length = document.getElementById('length_input').value;
+    var laps = document.getElementById('laps_input').value;
+  
+    // Guardar la longitud y vueltas en campos ocultos
+    document.getElementById('length_km').value = length;
+    document.getElementById('laps').value = laps;
+
+    // Enviar los datos al servidor
+    document.getElementById('length_form').submit();
+  }
+</script>
 {% endblock %}

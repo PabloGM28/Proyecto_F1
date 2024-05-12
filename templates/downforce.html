@@ -6,11 +6,12 @@
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 my-2">
             <div style="display: flex; justify-content: center;">
-                <img src="static\downforce.png" alt="Descripción de la imagen" class="img-fluid" id="TituloWeb">
-        </div>        
+                <img src="static/downforce.png" alt="Descripción de la imagen" class="img-fluid" id="TituloWeb">
+            </div>        
+        </div>
     </div>
     <div class="row my-2">
-      <p id="text-tyres">PICK THE RIGHT DOWNFORCE</p>
+        <p id="text-tyres">PICK THE RIGHT DOWNFORCE</p>
     </div>
     <div class="row">
         <nav class="navbar">
@@ -18,69 +19,84 @@
                 <a class="navbar-brand" href="#">
                     <img src="static/LogoF1.png" alt="Logo" width="120" height="60" class="logoF1">
                 </a>
-
-                <form class="d-flex" role="search">
-                    <a id="HOME" class="btn btn-danger btn-large" href="{{ url_for('index') }}">HOME</a>
-                    <a class="btn btn-secondary btn-small" href="{{ url_for('length') }}" id="HOME"><</a>
-                    <a class="btn btn-success btn-small" href="{{ url_for('corners') }}" id="HOME">></a>
-                </form>
+                <form class="d-flex" role="search" action="{{ url_for('process_downforce_and_redirect') }}" method="POST" onsubmit="setDownforceSelection()">
+                  <a id="HOME" class="btn btn-danger btn-large" href="{{ url_for('index') }}">HOME</a>
+                  <a class="btn btn-secondary btn-small" href="{{ url_for('length') }}" id="HOME"><</a>
+                  <button type="submit" class="btn btn-success btn-small" id="HOME">></button>
+                  <input type="hidden" name="downforce_selection" id="downforce_selection" value="">
+              </form>           
             </div>
-          </nav>
+        </nav>
     </div>
     <div class="container text-center">
         <div class="row row-cols-3">
-          <div class="col">
-            <div class="card">
-                <img src="static\up_arrow.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">LOW</h5>
-                  <p class="card-text">
-                    <li>Enhanced grip and maneuverability in corners</li>
-                    <li>Improved traction and stability through turns</li>
-                    <li>Higher cornering speeds</li>
-                    <li>Sacrifices grip and stability through corners</li>
-                  </p>
-                  <div class="boton">
-                    <input type="checkbox" id="btn-switch-1">
-                    <label for="btn-switch-1" class="lbl-switch"></label> 
-                  </div>
+            <div class="col">
+                <div class="card">
+                    <img src="static/up_arrow.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">LOW</h5>
+                        <p class="card-text">
+                            <li>Enhanced grip and maneuverability in corners</li>
+                            <li>Improved traction and stability through turns</li>
+                            <li>Higher cornering speeds</li>
+                            <li>Sacrifices grip and stability through corners</li>
+                        </p>
+                        <div class="boton">
+                            <input type="radio" id="btn-switch-1" name="downforce_selection" value="low">
+                            <label for="btn-switch-1" class="lbl-switch"></label> 
+                        </div>
+                    </div>
                 </div>
-              </div>
-          </div>
-          <div class="col">
-            <div class="card">
-                <img src="static\double_arrow.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">MEDIUM</h5>
-                  <p class="card-text">
-                    <li>Balances grip and speed for mixed track layouts</li>
-                    <li>Versatile performance across different sections of the track</li>
-                    <li>Moderate stability and agility</li>
-                  </p>
-                  <div class="boton">
-                    <input type="checkbox" id="btn-switch-2">
-                    <label for="btn-switch-2" class="lbl-switch"></label> 
-                  </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="static/double_arrow.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">MEDIUM</h5>
+                        <p class="card-text">
+                            <li>Balances grip and speed for mixed track layouts</li>
+                            <li>Versatile performance across different sections of the track</li>
+                            <li>Moderate stability and agility</li>
+                        </p>
+                        <div class="boton">
+                            <input type="radio" id="btn-switch-2" name="downforce_selection" value="medium">
+                            <label for="btn-switch-2" class="lbl-switch"></label> 
+                        </div>
+                    </div>
                 </div>
-              </div>
-          </div>
-          <div class="col">
-            <div class="card">
-                <img src="static\triple_arrow.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">HIGH</h5>
-                  <p class="card-text">
-                    <li>Maximizes straight-line speed and acceleration</li>
-                    <li>Minimizes drag for top-end velocity</li>
-                    <li>Suitable for tracks with long straights and few tight corners</li>
-                  </p>
-                  <div class="boton">
-                    <input type="checkbox" id="btn-switch-3">
-                    <label for="btn-switch-" class="lbl-switch"></label> 
-                  </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="static/triple_arrow.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">HIGH</h5>
+                        <p class="card-text">
+                            <li>Maximizes straight-line speed and acceleration</li>
+                            <li>Minimizes drag for top-end velocity</li>
+                            <li>Suitable for tracks with long straights and few tight corners</li>
+                        </p>
+                        <div class="boton">
+                            <input type="radio" id="btn-switch-3" name="downforce_selection" value="high">
+                            <label for="btn-switch-3" class="lbl-switch"></label> 
+                        </div>
+                    </div>
                 </div>
-              </div>
-          </div>
-      </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+
+<script>
+  // Función para establecer la selección de downforce antes de enviar el formulario
+  function setDownforceSelection() {
+      var selectedDownforce = document.querySelector('input[name="downforce_selection"]:checked');
+      if (selectedDownforce) {
+          document.getElementById("downforce_selection").value = selectedDownforce.value;
+      }
+  }
+</script>
 {% endblock %}
+
+
+

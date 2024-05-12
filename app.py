@@ -8,6 +8,18 @@ tyre_selection = []
 weather_selection = ""
 asphalt_temp = ""
 ambient_temp = ""
+# Variables para almacenar la selección de longitud y vueltas
+length_km = ""
+laps = ""
+# Variable para almacenar la selección de downforce
+downforce_selection = ""
+# Variables para almacenar la selección de curvas
+corner_slow = ""
+corner_medium = ""
+corner_fast = ""
+#Variables para el factor de degradación
+factor_deterioration = ""
+
 
 @app.route('/')
 def index():
@@ -36,6 +48,11 @@ def downforce():
 @app.route('/corners')
 def corners():
     return render_template('corners.html')
+
+@app.route('/deterioration')
+def deterioration():
+    return render_template('deterioration.html')
+
 
 # Ruta para procesar la selección de neumáticos y redirigir al usuario a "weather.html"
 @app.route('/process_tyre_selection_and_redirect', methods=['POST'])
@@ -67,5 +84,60 @@ def process_weather_selection_and_redirect():
         # Redirigir al usuario a la página "length.html"
         return redirect(url_for('length'))
 
+# Ruta para procesar la selección de longitud y vueltas y redirigir al usuario a "downforce.html"
+@app.route('/process_length_and_redirect', methods=['POST'])
+def process_length_and_redirect():
+    if request.method == 'POST':
+        # Obtener la selección de longitud y vueltas del formulario
+        global length_km, laps
+        length_km = request.form['length_km']
+        laps = request.form['laps']
+        # Imprimir la selección del usuario
+        print("Longitud del circuito:", length_km)
+        print("Número de vueltas:", laps)
+        # Redirigir al usuario a la página "downforce.html"
+        return redirect(url_for('downforce'))
+
+# Ruta para procesar la selección de downforce y redirigir al usuario a "corners"
+@app.route('/process_downforce_and_redirect', methods=['POST'])
+def process_downforce_and_redirect():
+    global downforce_selection
+    if request.method == 'POST':
+        # Obtener la selección de downforce del formulario
+        downforce_selection = request.form.get('downforce_selection')
+        # Imprimir la selección de downforce (para verificar en la consola)
+        print("Selección de downforce:", downforce_selection)
+        # Redirigir al usuario a la página "corners"
+        return redirect(url_for('deterioration'))
+
+# Ruta para procesar la degradación y redirigir al usuario a la página siguiente    
+@app.route('/process_deterioration_and_redirect', methods=['POST'])
+def process_deterioration_and_redirect():
+    if request.method == 'POST':
+        #Obtener la selección del factor de degradación
+        global factor_deterioration
+        factor_deterioration = request.form['factor_deterioration']
+        #Imprimir factor de degradación
+        print ("El factor de degradación es:", factor_deterioration)
+        #Redirigir al usuario a la siguiente página
+        return redirect(url_for('corners'))
+    
+# Ruta para procesar la selección de esquinas y redirigir al usuario a la página siguiente
+@app.route('/process_corners_and_redirect', methods=['POST'])
+def process_corners_and_redirect():
+    if request.method == 'POST':
+        # Obtener la selección de esquinas del formulario
+        global corner_slow,corner_medium,corner_fast
+        corner_slow = request.form['corner_slow']
+        corner_medium = request.form['corner_medium']
+        corner_fast = request.form['corner_fast']
+        # Imprimir la selección de esquinas (para verificar en la consola)
+        print("Curvas lentas:", corner_slow )
+        print("Curvas medias:", corner_medium )
+        print("Curvas rápidas:", corner_fast )
+        # Redirigir al usuario a la siguiente página
+        return redirect(url_for('final_strategy'))
+    
+    
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

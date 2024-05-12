@@ -4,28 +4,32 @@
 {% block body %}
 <div class="container text-center fluid">
   <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 my-2">
-            <div style="display: flex; justify-content: center;">
-                <img src="static\Corners.png" alt="Descripción de la imagen" class="img-fluid" id="TituloWeb">
-        </div>        
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 my-2">
+      <div style="display: flex; justify-content: center;">
+        <img src="static\Corners.png" alt="Descripción de la imagen" class="img-fluid" id="TituloWeb">
+      </div>        
     </div>
+  </div>
   <div class="row my-2">
-      <p id="text-weather">PICK THE AUMOUNT OF CORNERS</p>
+    <p id="text-weather">PICK THE AMOUNT OF CORNERS</p>
   </div>
   <div class="row">
-        <nav class="navbar">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="static/LogoF1.png" alt="Logo" width="120" height="60" class="logoF1">
-                </a>
+    <nav class="navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="static/LogoF1.png" alt="Logo" width="120" height="60" class="logoF1">
+        </a>
 
-                <form class="d-flex" role="search">
-                    <a id="HOME" class="btn btn-danger btn-large" href="{{ url_for('index') }}">HOME</a>
-                    <a class="btn btn-secondary btn-small" href="{{ url_for('downforce') }}" id="HOME"><</a>
-                    <a class="btn btn-success btn-small" href="{{ url_for('final_strategy') }}" id="HOME">></a>
-                </form>
-            </div>
-        </nav>
+        <form class="d-flex" id="corners_form" role="search" action="{{ url_for('process_corners_and_redirect') }}" method="POST">
+          <a id="HOME" class="btn btn-danger btn-large" href="{{ url_for('index') }}">HOME</a>
+          <a class="btn btn-secondary btn-small" href="{{ url_for('deterioration') }}" id="HOME"><</a>
+          <button type="submit" class="btn btn-success btn-small" id="HOME" onclick="submitCornerSelection()">SEND</button>
+          <input type="hidden" id="corner_slow" name="corner_slow" value="">
+          <input type="hidden" id="corner_medium" name="corner_medium" value="">
+          <input type="hidden" id="corner_fast" name="corner_fast" value="">
+        </form>
+      </div>
+    </nav>
   </div>
   <div class="row my-2" id="row_card">
     <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 my-2">
@@ -35,7 +39,7 @@
           <h5 class="card-title">SLOW</h5>
         </div>
         <div class="card-footer">
-            <input type="text" class="form-control" id="placeholder_text" placeholder="NUMBER OF CORNERS" aria-label="NUMBER OF CORNERS">
+          <input type="text" class="form-control" id="slow_corners" placeholder="NUMBER OF CORNERS" aria-label="NUMBER OF CORNERS">
         </div>
       </div>
     </div>
@@ -46,7 +50,7 @@
           <h5 class="card-title">MEDIUM</h5>
         </div>
         <div class="card-footer">
-            <input type="text" class="form-control" id="placeholder_text" placeholder="NUMBER OF CORNERS" aria-label="NUMBER OF CORNERS">
+          <input type="text" class="form-control" id="medium_corners" placeholder="NUMBER OF CORNERS" aria-label="NUMBER OF CORNERS">
         </div>
       </div>
     </div>
@@ -57,10 +61,29 @@
           <h5 class="card-title">FAST</h5>
         </div>
         <div class="card-footer">
-            <input type="text" class="form-control" id="placeholder_text" placeholder="NUMBER OF CORNERS" aria-label="NUMBER OF CORNERS">
+          <input type="text" class="form-control" id="fast_corners" placeholder="NUMBER OF CORNERS" aria-label="NUMBER OF CORNERS">
         </div>
       </div>
     </div>
+  </div>
 </div>
 
+<script>
+  // Función para enviar la selección de esquinas al servidor
+  function submitCornerSelection() {
+    var slow_corners = document.getElementById('slow_corners').value;
+    var medium_corners = document.getElementById('medium_corners').value;
+    var fast_corners = document.getElementById('fast_corners').value;
+  
+    // Guardar las esquinas de la selección en campos ocultos
+    document.getElementById('corner_slow').value = slow_corners;
+    document.getElementById('corner_medium').value = medium_corners;
+    document.getElementById('corner_fast').value = fast_corners;
+
+
+    // Enviar los datos al servidor
+    document.getElementById('corners_form').submit();
+  }
+</script>
 {% endblock %}
+

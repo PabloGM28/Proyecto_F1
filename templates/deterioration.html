@@ -1,0 +1,58 @@
+{% extends "./layout.html" %}
+{% block title %}Corners{% endblock %}
+
+{% block body %}
+<div class="container text-center fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 my-2">
+      <div style="display: flex; justify-content: center;">
+        <img src="static\Deterioration.png" alt="Descripción de la imagen" class="img-fluid" id="TituloWeb">
+      </div>        
+    </div>
+  <div class="row my-2">
+    <p id="text-weather">PICK THE EXPECTED DETERIORATION FACTOR</p>
+  </div>
+  <div class="row">
+    <nav class="navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="static/LogoF1.png" alt="Logo" width="120" height="60" class="logoF1">
+        </a>
+
+        <form class="d-flex" id="deterioration_form" role="search" action="{{ url_for('process_deterioration_and_redirect') }}" method="post">
+          <a id="HOME" class="btn btn-danger btn-large" href="{{ url_for('index') }}">HOME</a>
+          <a class="btn btn-secondary btn-small" href="{{ url_for('downforce') }}" id="HOME"><</a>
+          <button type="submit" class="btn btn-success btn-small" id="HOME" onclick="submitDeteriorationSelection()">></button>
+          <input type="hidden" id="factor_deterioration" name="factor_deterioration" value="">
+        </form>
+      </div>
+    </nav>
+  </div>
+  <div class="row my-2" id="row_card">
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 my-2">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 my-2">
+      <div class="card" id="card">
+        <img src="static\up_arrow.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">DETERIORATION FACTOR</h5>
+        </div>
+        <div class="card-footer">
+          <input type="text" class="form-control" id="deterioration_factor" placeholder="TYPE THE VALUE" aria-label="TYPE THE VALUE">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Función para enviar la selección de esquinas al servidor
+  function submitDeteriorationSelection() {
+    var factor_de_degradacion = document.getElementById('deterioration_factor').value;  
+    // Guardar las esquinas de la selección en campos ocultos
+    document.getElementById('factor_deterioration').value = factor_de_degradacion;
+    // Enviar los datos al servidor
+    document.getElementById('deterioration_form').submit();
+  }
+</script>
+{% endblock %}
