@@ -23,6 +23,7 @@ factor_deterioration = ""
 
 @app.route('/')
 def index():
+<<<<<<< Updated upstream
     return render_template('index.html')
 
 @app.route('/tyres')
@@ -121,6 +122,9 @@ def process_deterioration_and_redirect():
         print ("El factor de degradación es:", factor_deterioration)
         #Redirigir al usuario a la siguiente página
         return redirect(url_for('corners'))
+=======
+    return render_template('tyres.html')
+>>>>>>> Stashed changes
     
 # Ruta para procesar la selección de esquinas y redirigir al usuario a la página siguiente
 @app.route('/process_corners_and_redirect', methods=['POST'])
