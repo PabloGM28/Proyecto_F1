@@ -21,7 +21,7 @@
                 </a>
                 <form class="d-flex" role="search" action="{{ url_for('process_downforce_and_redirect') }}" method="POST" onsubmit="setDownforceSelection()">
                   <a id="HOME" class="btn btn-danger btn-large" href="{{ url_for('index') }}">HOME</a>
-                  <a class="btn btn-secondary btn-small" href="{{ url_for('length') }}" id="HOME"><</a>
+                  <a class="btn btn-secondary btn-small" href="{{ url_for('weather') }}" id="HOME"><</a>
                   <button type="submit" class="btn btn-success btn-small" id="HOME">></button>
                   <input type="hidden" name="downforce_selection" id="downforce_selection" value="">
               </form>           

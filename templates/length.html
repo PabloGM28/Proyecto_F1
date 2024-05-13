@@ -21,8 +21,8 @@
 
                 <form class="d-flex" role="search" id="length_form" action="{{ url_for('process_length_and_redirect') }}" method="post">
                     <a id="HOME" class="btn btn-danger btn-large" href="{{ url_for('index') }}">HOME</a>
-                    <a class="btn btn-secondary btn-small" id="HOME" href="{{ url_for('weather') }}"><</a>
-                    <button type="submit" id="HOME" class="btn btn-success btn-small" onclick="submitLengthData()">></button>
+                    <a class="btn btn-secondary btn-small" id="HOME" href="{{ url_for('corners') }}"><</a>
+                    <button type="submit" id="HOME" class="btn btn-success btn-small" onclick="submitLengthData()">SEND</button>
                     <input type="hidden" id="length_km" name="length_km" value="">
                     <input type="hidden" id="laps" name="laps" value="">
                 </form>

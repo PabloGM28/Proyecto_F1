@@ -23,7 +23,6 @@ factor_deterioration = ""
 
 @app.route('/')
 def index():
-<<<<<<< Updated upstream
     return render_template('index.html')
 
 @app.route('/tyres')
@@ -83,7 +82,7 @@ def process_weather_selection_and_redirect():
         print("Temperatura del asfalto:", asphalt_temp)
         print("Temperatura ambiente:", ambient_temp)
         # Redirigir al usuario a la página "length.html"
-        return redirect(url_for('length'))
+        return redirect(url_for('downforce'))
 
 # Ruta para procesar la selección de longitud y vueltas y redirigir al usuario a "downforce.html"
 @app.route('/process_length_and_redirect', methods=['POST'])
@@ -97,7 +96,7 @@ def process_length_and_redirect():
         print("Longitud del circuito:", length_km, "Km")
         print("Número de vueltas:", laps)
         # Redirigir al usuario a la página "downforce.html"
-        return redirect(url_for('downforce'))
+        return redirect(url_for('final_strategy'))
 
 # Ruta para procesar la selección de downforce y redirigir al usuario a "corners"
 @app.route('/process_downforce_and_redirect', methods=['POST'])
@@ -122,9 +121,6 @@ def process_deterioration_and_redirect():
         print ("El factor de degradación es:", factor_deterioration)
         #Redirigir al usuario a la siguiente página
         return redirect(url_for('corners'))
-=======
-    return render_template('tyres.html')
->>>>>>> Stashed changes
     
 # Ruta para procesar la selección de esquinas y redirigir al usuario a la página siguiente
 @app.route('/process_corners_and_redirect', methods=['POST'])
@@ -140,7 +136,7 @@ def process_corners_and_redirect():
         print("Curvas medias:",corner_medium )
         print("Curvas rápidas:",corner_fast )
         # Redirigir al usuario a la siguiente página
-        return redirect(url_for('final_strategy'))
+        return redirect(url_for('length'))
         
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

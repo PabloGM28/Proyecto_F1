@@ -113,19 +113,19 @@ body{
     cursor: pointer;
 }
 #btn-switch-1:checked~ .lbl-switch{
-    background: red; 
+    background: green; 
 }
 #btn-switch-2:checked~ .lbl-switch{
-    background: red; 
+    background: green; 
 }
 #btn-switch-3:checked~ .lbl-switch{
-    background:red; 
+    background:green; 
 }
 #btn-switch-4:checked~ .lbl-switch{
-    background: red; 
+    background: green; 
 }
 #btn-switch-5:checked~ .lbl-switch{
-    background: red; 
+    background: green; 
 }
 .lbl-switch:after{
     position: absolute;
