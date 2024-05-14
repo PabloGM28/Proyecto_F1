@@ -61,7 +61,9 @@ def degradation(track_temp, air_temp, high_speed_turns, medium_speed_turns, low_
     for i in [0,1,2]:
         degradation_factor[i] = degradation_factor[i]*deg_aero*turn_factor*abrassion_factor*deg_track*deg_air*graining*length
     
-    ######### Degradacion adimensional #########
+
+
+    ######### DEGRADACION ADIMENSIONAL #########
     for i in [0,1,2]:
         degradation_factor[i] = degradation_factor[i]/degradation_factor[2]
     return degradation_factor
