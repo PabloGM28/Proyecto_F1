@@ -16,29 +16,31 @@
                 <a class="navbar-brand" href="#">
                     <img src="static/LogoF1.png" alt="Logo" width="120" height="60" class="logoF1">
                 </a>
-                <form class="d-flex" role="search">
+                <form class="d-flex" role="search" id="circuit_form" action="{{ url_for('process_circuit_and_redirect') }}" method="POST">
                     <a id="HOME" class="btn btn-danger btn-large" href="{{ url_for('index') }}">HOME</a>
-                    <a id="HOME" class="btn btn-success btn-large" href="{{ url_for('tyres') }}">CONTINUE</a>
+                    <button type="button" id="HOME" class="btn btn-success btn-large" onclick="submitCircuitSelection()">CONTINUE</button>
+                    <input type="hidden" id="selected_circuit" name="selected_circuit" value="">
                 </form>
+
             </div>
           </nav>
     </div>
     <div class="row my-1">
         <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2" >
             <div class="btn-group-vertical botones" role="group" aria-label="Vertical radio toggle button group">
-                <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1" autocomplete="off">
+                <input type="radio" class="btn-check" name="circuit_selection" id="vbtn-radio1" value="ALBERT PARK" autocomplete="off">
                 <label class="btn btn-main btn-dark btn-lg" for="vbtn-radio1" onclick="changeImage('static/Albert Park.png', 'ALBERT PARK')">ALBERT PARK</label>
-                <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio2" autocomplete="off">
-                <label class="btn btn-main btn-dark btn-lg" for="vbtn-radio2" onclick="changeImage('static/bahrein.png', 'BAHRAIN')" >BAHRAIN</label>
-                <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio3" autocomplete="off">
+                <input type="radio" class="btn-check" name="circuit_selection" id="vbtn-radio2" value="BAHREIN" autocomplete="off">
+                <label class="btn btn-main btn-dark btn-lg" for="vbtn-radio2" onclick="changeImage('static/bahrein.png', 'BAHRAIN')">BAHRAIN</label>
+                <input type="radio" class="btn-check" name="circuit_selection" id="vbtn-radio3" value="JEDDAH" autocomplete="off">
                 <label class="btn btn-main btn-dark btn-lg" for="vbtn-radio3" onclick="changeImage('static/jeddah.png', 'JEDDAH')">JEDDAH</label>
-                <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio4" autocomplete="off">
+                <input type="radio" class="btn-check" name="circuit_selection" id="vbtn-radio4" value="INTERLAGOS" autocomplete="off">
                 <label class="btn btn-main btn-dark btn-lg" for="vbtn-radio4" onclick="changeImage('static/interlagos.png', 'INTERLAGOS')">INTERLAGOS</label>
-                <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio5" autocomplete="off">
+                <input type="radio" class="btn-check" name="circuit_selection" id="vbtn-radio5" value="SPA" autocomplete="off">
                 <label class="btn btn-main btn-dark btn-lg" for="vbtn-radio5" onclick="changeImage('static/SPA.png', 'SPA')">SPA</label>
-                <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio6" autocomplete="off">
+                <input type="radio" class="btn-check" name="circuit_selection" id="vbtn-radio6" value="SUZUKA" autocomplete="off">
                 <label class="btn btn-main btn-dark btn-lg" for="vbtn-radio6" onclick="changeImage('static/Suzuka.png', 'SUZUKA')">SUZUKA</label>
-                <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio7" autocomplete="off">
+                <input type="radio" class="btn-check" name="circuit_selection" id="vbtn-radio7" value="YOUR OWN CIRCUIT" autocomplete="off">
                 <label class="btn btn-main btn-dark btn-lg" for="vbtn-radio7" onclick="changeImage('static/yourowncircuit.png', 'YOUR OWN CIRCUIT')">CREATE YOUR OWN!</label>
               </div>
 
@@ -50,11 +52,21 @@
 </div>
 
 <script>
+    // Function to submit circuit selection
+    function submitCircuitSelection() {
+        var circuitSelection = document.querySelector('input[name="circuit_selection"]:checked');
+        if (circuitSelection !== null) {
+            var selectedCircuit = circuitSelection.value;
+            document.getElementById('selected_circuit').value = selectedCircuit;
+            document.getElementById('circuit_form').submit();
+        } else {
+            alert("Please select a circuit.");
+        }
+    }
+
     // Function to change image and title when a button is clicked
     function changeImage(imageName, imageTitle) {
         document.getElementById("image-display").src = imageName;
-        document.getElementById("image-title").innerText = imageTitle; /* Set the title */
     }
 </script>
-
 {% endblock %}

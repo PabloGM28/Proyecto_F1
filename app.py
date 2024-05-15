@@ -20,6 +20,7 @@ corner_fast = ""
 #Variables para el factor de degradación
 factor_deterioration = ""
 
+selected_circuit = ""
 
 @app.route('/')
 def index():
@@ -52,6 +53,19 @@ def corners():
 @app.route('/deterioration')
 def deterioration():
     return render_template('deterioration.html')
+
+
+@app.route('/process_circuit_and_redirect', methods=['POST'])
+def process_circuit_and_redirect():
+    global selected_circuit
+    if request.method == 'POST':
+        # Obtener la selección del circuito del formulario
+        selected_circuit = request.form.get('selected_circuit')
+        # Imprimir la selección del circuito
+        print("Selección del circuito:", selected_circuit)
+        # Aquí puedes almacenar la selección en una base de datos si lo deseas
+        # Redirigir al usuario a 'tyres.html'
+        return redirect(url_for('tyres'))
 
 
 # Ruta para procesar la selección de neumáticos y redirigir al usuario a "weather.html"
@@ -110,18 +124,24 @@ def process_downforce_and_redirect():
         # Redirigir al usuario a la página "corners"
         return redirect(url_for('deterioration'))
 
-# Ruta para procesar la degradación y redirigir al usuario a la página siguiente    
 @app.route('/process_deterioration_and_redirect', methods=['POST'])
 def process_deterioration_and_redirect():
     if request.method == 'POST':
-        #Obtener la selección del factor de degradación
+        # Obtener la selección del factor de degradación
         global factor_deterioration
         factor_deterioration = request.form['factor_deterioration']
-        #Imprimir factor de degradación
+        # Imprimir factor de degradación
         print ("El factor de degradación es:", factor_deterioration)
-        #Redirigir al usuario a la siguiente página
-        return redirect(url_for('corners'))
-    
+        
+        # Verificar el valor de selected_circuit
+        if selected_circuit == 'YOUR OWN CIRCUIT':
+            # Redirigir al usuario a la página 'corners'
+            return redirect(url_for('corners'))
+        else:
+            # Redirigir al usuario a la página 'final_strategy'
+            return redirect(url_for('final_strategy'))
+        
+
 # Ruta para procesar la selección de esquinas y redirigir al usuario a la página siguiente
 @app.route('/process_corners_and_redirect', methods=['POST'])
 def process_corners_and_redirect():
