@@ -14,18 +14,18 @@ def degradation(track_temp, air_temp, high_speed_turns, medium_speed_turns, low_
 
     ######### Degradacion por compuesto #########
     # Duro, medio, blando
-    degradation_factor = [1.2, 1.1, 1.025]
+    degradation_factor = [1.0083, 1.00416, 1]
 
     ######### Degradacion por carga aerodinámica #########   
     if wing_load == 'low': 
         deg_aero = 1.1    
     elif wing_load == 'medium': 
-        deg_aero = 1.3
+        deg_aero = 1.2
     elif wing_load == 'high': 
-        deg_aero = 1.5
+        deg_aero = 1.3
 
     ######### Degradacion por curvas #########
-    turn_factor = 1.0 + 0.2*high_speed_turns + 0.1*medium_speed_turns + 0.05*low_speed_turns
+    turn_factor = 1.0 + 0.02*high_speed_turns + 0.01*medium_speed_turns + 0.05*low_speed_turns
 
     ######### Degradacion por abrasion #########
     abrassion_factor = (1+abrassion)
@@ -69,4 +69,4 @@ def degradation(track_temp, air_temp, high_speed_turns, medium_speed_turns, low_
     degradation_factor = {"soft":degradation_factor[0],"medium":degradation_factor[1],"hard":degradation_factor[2]}
     return degradation_factor
 
-#print(degradation(35,27,4,3,2,'high',5,0.2)) # que no falten los prints de prueba
+print(degradation(35,27,4,3,2,'high',5,0.2)) # que no falten los prints de prueba

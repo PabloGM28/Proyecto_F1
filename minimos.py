@@ -11,7 +11,9 @@ def encontrar_minimos(matriz, n):
     minimos = heapq.nsmallest(n, valores_con_posiciones, key = lambda x: x[0])
     return minimos
 
-# # Ejemplo de uso
+
+
+# # Ejemplo de uso:
 # matriz = [
 #     [5, 12, 17, 9, 3],
 #     [13, 4, 8, 14, 1],
