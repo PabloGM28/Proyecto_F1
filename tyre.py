@@ -18,11 +18,12 @@ def laptime(laps,life,degradation,speed_0):
         if lap >= life:
             # La velocidad cae exponencialmente después de la vuelta crítica
             exp_decrease = math.exp(-(abs(1-degradation))*(lap - life))
+            print(exp_decrease)
             speed_now = speed_0*exp_decrease
         else:
             speed_now = speed_0 
         # Calcular el tiempo por vuelta basado en la degradación
-        laptime = 1 / speed_now + deg_now/10
+        laptime = speed_now + deg_now/10
         # Agregar el tiempo por vuelta al tiempo total
         total_time += laptime
 
@@ -30,8 +31,13 @@ def laptime(laps,life,degradation,speed_0):
         
     return time_per_lap
 
+
+
+# Para probar la funcion:
+
+
 # #total_time, time_per_lap = laptime(57,15,1.3,2)
-time_per_lap = laptime(57,5,1.083,5)
+time_per_lap = laptime(57,5,1.83,1)
 # #print(f"Tiempo total del neumático: {total_time:.2f}")
 print("Tiempos por vuelta:", time_per_lap)
 

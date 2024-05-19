@@ -8,13 +8,13 @@
 
 #parametros = {"track_temp", "air_temp", "high_speed_turns", "medium_speed_turns", "low_speed_turns", "wing_load", "length", "abrassion"}
 
-def degradation(track_temp, air_temp, high_speed_turns, medium_speed_turns, low_speed_turns, wing_load, length, abrassion):
+def degradation(track_temp, air_temp, high_speed_turns, medium_speed_turns, low_speed_turns, wing_load, length, abrassion,condition):
     # Define degradation factor for each tire type based on input parameters
     degradation_factor = 1.0
 
     ######### Degradacion por compuesto #########
     # Duro, medio, blando
-    degradation_factor = [0.083, 0.043, 0.02]
+    degradation_factor = [1.083, 1.043, 1]
 
     ######### Degradacion por carga aerodinámica #########   
     if wing_load == 'low': 
@@ -57,16 +57,21 @@ def degradation(track_temp, air_temp, high_speed_turns, medium_speed_turns, low_
     else:
         graining = 1.0
 
+    if condition == "cloudy":
+        lower_deg = 0.9
+    else:
+        lower_deg = 1
+        
     ######### Degradacion por longitud de pista #########
     for i in [0,1,2]:
-        degradation_factor[i] = degradation_factor[i]*deg_aero*turn_factor*abrassion_factor*deg_track*deg_air*graining*length
+        degradation_factor[i] = degradation_factor[i]*deg_aero*turn_factor*abrassion_factor*deg_track*deg_air*graining*length*lower_deg
     
 
 
     ######### DEGRADACION ADIMENSIONAL #########
-    for i in [0,1,2]:
-        degradation_factor[i] = degradation_factor[i]/degradation_factor[2]
+    # for i in [0,1,2]:
+    #     degradation_factor[i] = degradation_factor[i]/degradation_factor[2]
     degradation_factor = {"soft":degradation_factor[0],"medium":degradation_factor[1],"hard":degradation_factor[2]}
     return degradation_factor
 
-print(degradation(35,27,4,3,2,'high',5,0.2)) # que no falten los prints de prueba
+print(degradation(35,27,4,3,2,'high',5,0.2,"sunny")) # que no falten los prints de prueba

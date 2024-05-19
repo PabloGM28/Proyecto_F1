@@ -4,9 +4,9 @@ import numpy as np
 import combinatoria
 import minimos
 
-laps = 5
-vida_esperada = {"soft":int(round(laps**0.5)),"medium":int(round(laps**0.4)),"hard":int(round(laps**0.3))}
-degradacion_por_tipos = degradacion.degradation(43,35,4,3,5,'low',6,0.3)
+laps = 50
+vida_esperada = {"soft":int(round(laps**0.2)),"medium":int(round(laps**0.5)),"hard":int(round(laps**0.6))}
+degradacion_por_tipos = degradacion.degradation(43,35,4,3,5,'low',6,0.3,"sunny")
 velocidades = {"soft":1,"medium":1.043,"hard":1.083}
 types = ["soft","medium","hard"]
 tiempo_neumatico = {"soft":np.zeros((1,laps)),"medium":np.zeros((1,laps)),"hard":np.zeros((1,laps))}
@@ -14,7 +14,7 @@ tiempo_neumatico = {"soft":np.zeros((1,laps)),"medium":np.zeros((1,laps)),"hard"
 
 for i in types:
     tiempo_neumatico[i] = tyre.laptime(laps, vida_esperada[i], degradacion_por_tipos[i], velocidades[i])
-print(tiempo_neumatico) # Este print de prueba me enseña que efectivamente mis tiempos estan ordenados y asociados a  los valores.
+#print(tiempo_neumatico) # Este print de prueba me enseña que efectivamente mis tiempos estan ordenados y asociados a  los valores.
 
 
 diccionario_estrategias = {}
@@ -57,20 +57,12 @@ for opcion in combinaciones:
                 paradas.append(len(estrategia))
 
 print(tiempos_estrategia)
-print(paradas)
-# estrategia_ganadora_raw = min(tiempos_estrategia)
-# posicion = tiempos_estrategia.index(min(tiempos_estrategia))
+#print(paradas)
 estrategias = list(diccionario_estrategias.keys())
 estrategia_ganadora = estrategias[tiempos_estrategia.index(min(tiempos_estrategia))]
 
 print(estrategia_ganadora)
     
-    #print(diccionario_estrategias)
-
-    # with open('diccionario_estrategias.json', 'w') as file:
-    #     json.dump(diccionario_estrategias, file, indent=4)
-
-    #print(diccionario_estrategias)
         
   
         
