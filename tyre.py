@@ -22,7 +22,7 @@ def laptime(laps,life,degradation,speed_0):
         else:
             speed_now = speed_0 
         # Calcular el tiempo por vuelta basado en la degradación
-        laptime = 1 / speed_now + deg_now
+        laptime = 1 / speed_now + deg_now/10
         # Agregar el tiempo por vuelta al tiempo total
         total_time += laptime
 
@@ -31,7 +31,7 @@ def laptime(laps,life,degradation,speed_0):
     return time_per_lap
 
 # #total_time, time_per_lap = laptime(57,15,1.3,2)
-time_per_lap = laptime(57,15,1.3,2)
+time_per_lap = laptime(57,5,1.083,5)
 # #print(f"Tiempo total del neumático: {total_time:.2f}")
 print("Tiempos por vuelta:", time_per_lap)
 
