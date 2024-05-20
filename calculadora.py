@@ -42,7 +42,7 @@ def estrategia_optima(laps,track_temp, air_temp, high_speed_turns, medium_speed_
                     
                     suma = 0 # inicializo a cero el tiempo de carrera:
                     vueltas_tanda = np.zeros((4))
-                    print(vueltas_tanda)
+                    #print(vueltas_tanda)
                     contador = 0
                     for valor, (i,j) in vueltas_carrera:
                         #print(valor)
@@ -68,9 +68,9 @@ def estrategia_optima(laps,track_temp, air_temp, high_speed_turns, medium_speed_
     
     return estrategia_ganadora, estrategia_ganadora_vueltas
  
-print(estrategia_optima(23,40,35,5,4,3,"medium",6.03,0.1,"sunny"))
+# print(estrategia_optima(23,40,35,5,4,3,"medium",6.03,0.1,"sunny"))
 
-result, laps_per_compound = estrategia_optima(23,40,35,5,4,3,"medium",6.03,0.1,"sunny")
+# result, laps_per_compound = estrategia_optima(23,40,35,5,4,3,"medium",6.03,0.1,"sunny")
 
 
 
