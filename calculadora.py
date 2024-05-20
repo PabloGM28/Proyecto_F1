@@ -47,8 +47,8 @@ def estrategia_optima(laps,track_temp, air_temp, high_speed_turns, medium_speed_
                         #print(valor)
                         suma = suma + valor #tiempo total siguiendo la estrategia de ahora: "elemento" es una tupla del tipo ('neumatico','neumatico',...)
                         #print(i)
-                        vueltas_tanda[0,i] += 1
-                    suma = suma + (len(estrategia)-1)  
+                        vueltas_tanda[0,i] = int(vueltas_tanda[0,i] + 1)
+                    #suma = suma + (len(estrategia)-1)  
                     #print(suma,len(estrategia))
 
                     #diccionario_vueltas_por_tanda.append(vueltas_tanda)
