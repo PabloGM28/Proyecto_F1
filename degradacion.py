@@ -39,6 +39,8 @@ def degradation(track_temp, air_temp, high_speed_turns, medium_speed_turns, low_
         deg_track = 1.005
     elif 35<= track_temp < 45:
         deg_track = 1.015
+    elif track_temp >=45:
+        deg_track = 1.2
 
     ######### Degradacion por temperatura del aire #########
     if air_temp < 25:

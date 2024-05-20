@@ -31,7 +31,7 @@ factor_deterioration = ""
 selected_circuit = ""
 
 result = []
-
+laps_per_compound = []
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -120,7 +120,7 @@ def process_length_and_redirect():
         print("Longitud del circuito:", length_km, "Km")
         print("Número de vueltas:", laps)
         # Redirigir al usuario a la página "downforce.html"
-        result= estrategia_optima(int(laps),int(asphalt_temp),int(ambient_temp),int(corner_fast),int(corner_medium),int(corner_slow),downforce_selection,float(length_km),float(factor_deterioration),weather_selection)
+        result = estrategia_optima(int(laps),int(asphalt_temp),int(ambient_temp),int(corner_fast),int(corner_medium),int(corner_slow),downforce_selection,float(length_km),float(factor_deterioration),weather_selection)
         print("Tu resultado", result)
         return redirect(url_for('final_strategy'))
 

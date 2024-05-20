@@ -11,7 +11,7 @@ def generate_combinations(strings,n):
 # Ejemplo de uso, queda comentado pero puede usarse para probar esta funcion: Recuerda meter el numero de neumaticos
 # y las paradas que quieres hacer en carrera:
 
-# strings = ["soft", "medium", "high"]
+strings = ["soft", "medium", "high"]
 
-# combinations = generate_combinations(strings,2)
-# print(combinations)
+combinations = generate_combinations(strings,2)
+print(combinations)
