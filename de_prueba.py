@@ -147,17 +147,18 @@ def process_deterioration_and_redirect():
             # Redirigir al usuario a la página 'corners'
             return redirect(url_for('corners'))
         else:
-            if selected_circuit == 'ALBERT PARK'  
+            if selected_circuit == 'ALBERT PARK':  
 
             elif selected_circuit == 'BAHRAIN':
-                result = estrategia_optima (bahrain["vueltas"],asphalt_temp,ambient_temp,bahrain['high_speed'],)
+                result = estrategia_optima(bahrain["vueltas"],int(asphalt_temp),int(ambient_temp),bahrain['high_speed'],bahrain['medium_speed'],bahrain['low_speed'],downforce_selection,bahrain["length"],float(factor_deterioration))
 
             elif selected_circuit == 'JEDDAH':
-                result=estrategia_optima (laps)
-            elif selected_circuit == 'INTERLAGOS':
-                result=estrategia_optima (laps)
-            elif selected_circuit == 'SPA':
                 result = estrategia_optima (laps)
+
+            elif selected_circuit == 'INTERLAGOS':
+                result = estrategia_optima(interlagos["vueltas"],int(asphalt_temp),int(ambient_temp),interlagos['high_speed'],interlagos['medium_speed'],interlagos['low_speed'],downforce_selection,interlagos["length"],float(factor_deterioration))
+            elif selected_circuit == 'SPA':
+                result = estrategia_optima(spa["vueltas"],int(asphalt_temp),int(ambient_temp),spa['high_speed'],spa['medium_speed'],spa['low_speed'],downforce_selection,spa["length"],float(factor_deterioration))
             # Redirigir al usuario a la página 'final_strategy'
             return redirect(url_for('final_strategy'))
         
