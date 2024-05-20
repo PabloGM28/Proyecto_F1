@@ -9,7 +9,7 @@ jeddah= {"high_speed":16,"medium_speed":9,"low_speed":2,"length":6.175}
 interlagos= {"high_speed":6,"medium_speed":9,"low_speed":0,"length":4.309}
 spa= {"high_speed":7,"medium_speed":9,"low_speed":3,"length":7.004}
 suzuka= {"high_speed":11,"medium_speed":4,"low_speed":3,"length":5.807}
-
+new_track= {"high_speed":1,"medium_speed":1,"low_speed":1,"length":1}
 
 # Lista para almacenar la selección de neumáticos
 tyre_selection = []
@@ -147,6 +147,9 @@ def process_deterioration_and_redirect():
             # Redirigir al usuario a la página 'corners'
             return redirect(url_for('corners'))
         else:
+            if selected_circuit == 'ALBERT PARK'  
+
+            result = estrategia_optima (laps)
             # Redirigir al usuario a la página 'final_strategy'
             return redirect(url_for('final_strategy'))
         
