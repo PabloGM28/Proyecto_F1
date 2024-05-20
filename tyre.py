@@ -23,7 +23,7 @@ def laptime(laps,life,degradation,speed_0):
         else:
             speed_now = speed_0 
         # Calcular el tiempo por vuelta basado en la degradación
-        laptime = speed_now + deg_now/10
+        laptime = 120/speed_now + deg_now/10
         # Agregar el tiempo por vuelta al tiempo total
         total_time += laptime
 

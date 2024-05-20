@@ -74,4 +74,4 @@ def degradation(track_temp, air_temp, high_speed_turns, medium_speed_turns, low_
     degradation_factor = {"soft":degradation_factor[0],"medium":degradation_factor[1],"hard":degradation_factor[2]}
     return degradation_factor
 
-print(degradation(35,27,4,3,2,'high',5,0.2,"sunny")) # que no falten los prints de prueba
+#print(degradation(35,27,4,3,2,'high',5,0.2,"sunny")) # que no falten los prints de prueba

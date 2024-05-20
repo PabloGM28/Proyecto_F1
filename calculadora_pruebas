@@ -26,8 +26,8 @@ def estrategia_optima(laps,track_temp, air_temp, high_speed_turns, medium_speed_
         n = int(paradas)
         combinaciones_raw = combinatoria.generate_combinations(types,n) # Hasta aqui funciona si se comenta lo siguiente a 17:58 de la tarde de 14/05
         combinaciones.append(combinaciones_raw)
-    print(combinaciones)
-    print(len(combinaciones))
+    #print(combinaciones)
+    #print(len(combinaciones))
     paradas = []
     # El siguiente paso es ver, para cada estrategia, el tiempo total que se puede hacer con las n vueltas mas rapidas disponibles:
     for opcion in combinaciones:
@@ -56,12 +56,12 @@ def estrategia_optima(laps,track_temp, air_temp, high_speed_turns, medium_speed_
                     tiempos_estrategia.append(suma)       
                     paradas.append(len(estrategia))
 
-    print(tiempos_estrategia)
+    #print(tiempos_estrategia)
     #print(paradas)
     estrategias = list(diccionario_estrategias.keys())
     estrategia_ganadora = estrategias[tiempos_estrategia.index(min(tiempos_estrategia))]
-    #estrategia_ganadora_vueltas = [tiempos_estrategia.index(min(tiempos_estrategia))]
-    print(diccionario_vueltas_por_tanda)
+    estrategia_ganadora_vueltas = estrategias
+    #print(diccionario_vueltas_por_tanda)
     #print(estrategia_ganadora)
     return estrategia_ganadora
  
