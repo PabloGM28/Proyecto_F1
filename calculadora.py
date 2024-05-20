@@ -5,9 +5,9 @@ import combinatoria
 import minimos
 
 def estrategia_optima(laps,track_temp, air_temp, high_speed_turns, medium_speed_turns, low_speed_turns, wing_load, length, abrassion,condition):
-    vida_esperada = {"soft":int(round(laps**0.2)),"medium":int(round(laps**0.5)),"hard":int(round(laps**0.6))}
+    vida_esperada = {"soft":5,"medium":15,"hard":25}
     degradacion_por_tipos = degradacion.degradation(track_temp, air_temp, high_speed_turns, medium_speed_turns, low_speed_turns, wing_load, length, abrassion,condition)
-    velocidades = {"soft":1,"medium":1.043,"hard":1.083}
+    velocidades = {"soft":1,"medium":1.1,"hard":1.2}
     types = ["soft","medium","hard"]
     tiempo_neumatico = {"soft":np.zeros((1,laps)),"medium":np.zeros((1,laps)),"hard":np.zeros((1,laps))}
 
@@ -37,7 +37,7 @@ def estrategia_optima(laps,track_temp, air_temp, high_speed_turns, medium_speed_
                     # Para cada estrategia, relleno la matriz con tantas filas como neumaticos se vayan a usar y los tiempos de estos:
                     for neumatico in estrategia:            
                         matriz_tiempos.append(tiempo_neumatico[neumatico]) # Llenamos la matriz con los tiempos de neumaticos en orden
-                    #  print(matriz_tiempos) 
+                        print(matriz_tiempos) 
                     vueltas_carrera = minimos.encontrar_minimos(matriz_tiempos,laps)
                     
                     suma = 0 # inicializo a cero el tiempo de carrera:
@@ -48,7 +48,9 @@ def estrategia_optima(laps,track_temp, air_temp, high_speed_turns, medium_speed_
                         suma = suma + valor #tiempo total siguiendo la estrategia de ahora: "elemento" es una tupla del tipo ('neumatico','neumatico',...)
                         #print(i)
                         vueltas_tanda[0,i] += 1
-                    suma = suma + len(estrategia)    
+                    suma = suma + (len(estrategia)-1)  
+                    #print(suma,len(estrategia))
+
                     #diccionario_vueltas_por_tanda.append(vueltas_tanda)
                     #print(len(estrategia))
                     diccionario_estrategias[estrategia] = matriz_tiempos
@@ -67,7 +69,7 @@ def estrategia_optima(laps,track_temp, air_temp, high_speed_turns, medium_speed_
     
     return estrategia_ganadora, estrategia_ganadora_vueltas
  
-print(estrategia_optima(20,40,35,5,4,3,"medium",6.03,0.4,"sunny"))
+print(estrategia_optima(25,40,35,5,4,3,"medium",6.03,0.1,"sunny"))
 
 
 

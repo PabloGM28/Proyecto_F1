@@ -14,7 +14,7 @@ def degradation(track_temp, air_temp, high_speed_turns, medium_speed_turns, low_
 
     ######### Degradacion por compuesto #########
     # Duro, medio, blando
-    degradation_factor = [1.083, 1.043, 1]
+    degradation_factor = [1.083, 1.043, 1.02]
 
     ######### Degradacion por carga aerodinámica #########   
     if wing_load == 'low': 
