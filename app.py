@@ -3,7 +3,7 @@ from calculadora import estrategia_optima
 
 app = Flask(__name__)
 
-albert_park= {"high_speed":9,"medium_speed":4,"low_speed":3,"length":5.303}
+albert_park= {"high_speed":9,"medium_speed":4,"low_speed":3,"length":5.303, "laps":58}
 bahrain = {"high_speed":9,"medium_speed":4,"low_speed":2,"length":5.412}
 jeddah= {"high_speed":16,"medium_speed":9,"low_speed":2,"length":6.175}
 interlagos= {"high_speed":6,"medium_speed":9,"low_speed":0,"length":4.309}
@@ -147,9 +147,9 @@ def process_deterioration_and_redirect():
             # Redirigir al usuario a la página 'corners'
             return redirect(url_for('corners'))
         else:
-            if selected_circuit == 'ALBERT PARK'  
-
-            result = estrategia_optima (laps)
+            if selected_circuit == 'ALBERT PARK':
+                result = estrategia_optima (albert_park["laps"],int(asphalt_temp),int(ambient_temp), albert_park["high_speed"] ,albert_park["medium_speed"],albert_park["low_speed"],downforce_selection,albert_park["length"],float(factor_deterioration),weather_selection)
+                print ("resulatdo", result)
             # Redirigir al usuario a la página 'final_strategy'
             return redirect(url_for('final_strategy'))
         

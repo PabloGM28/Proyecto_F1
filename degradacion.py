@@ -57,7 +57,7 @@ def degradation(track_temp, air_temp, high_speed_turns, medium_speed_turns, low_
     else:
         graining = 1.0
 
-    if condition == "cloudy":
+    if condition == "CLOUDY":
         lower_deg = 0.9
     else:
         lower_deg = 1
