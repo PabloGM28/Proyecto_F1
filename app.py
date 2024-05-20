@@ -119,7 +119,7 @@ def process_length_and_redirect():
         print("Longitud del circuito:", length_km, "Km")
         print("Número de vueltas:", laps)
         # Redirigir al usuario a la página "downforce.html"
-        result= result = estrategia_optima (int(laps),int(asphalt_temp),int(ambient_temp),int(corner_fast),int(corner_medium),int(corner_slow),downforce_selection,length_km,int(factor_deterioration),weather_selection)
+        result= result = estrategia_optima (int(laps),int(asphalt_temp),int(ambient_temp),int(corner_fast),int(corner_medium),int(corner_slow),downforce_selection,float(length_km),float(factor_deterioration),weather_selection)
         return redirect(url_for('final_strategy'))
 
 # Ruta para procesar la selección de downforce y redirigir al usuario a "corners"
@@ -152,18 +152,18 @@ def process_deterioration_and_redirect():
                 result = estrategia_optima (albert_park['laps'],int(asphalt_temp),int(ambient_temp),albert_park['high_speed'],albert_park['medium_speed'],albert_park['low_speed'],downforce_selection,albert_park['length'],float(factor_deterioration),weather_selection)
                 print("Tu estrategia es",result)
             elif selected_circuit == 'BAHRAIN':
-                result = estrategia_optima(bahrain["laps"],int(asphalt_temp),int(ambient_temp),bahrain['high_speed'],bahrain['medium_speed'],bahrain['low_speed'],downforce_selection,bahrain["length"],float(factor_deterioration))
+                result = estrategia_optima(bahrain["laps"],int(asphalt_temp),int(ambient_temp),bahrain['high_speed'],bahrain['medium_speed'],bahrain['low_speed'],downforce_selection,bahrain["length"],float(factor_deterioration),weather_selection)
             elif selected_circuit == 'JEDDAH':
                 result = estrategia_optima (jeddah['laps'],int(asphalt_temp),int(ambient_temp),jeddah['high_speed'],jeddah['medium_speed'],jeddah['low_speed'],downforce_selection,jeddah['length'],float(factor_deterioration),weather_selection)
                 print("Tu etrategia es", result)
             elif selected_circuit == 'SPA':
-                result = estrategia_optima(spa["laps"],int(asphalt_temp),int(ambient_temp),spa['high_speed'],spa['medium_speed'],spa['low_speed'],downforce_selection,spa["length"],float(factor_deterioration))
+                result = estrategia_optima(spa["laps"],int(asphalt_temp),int(ambient_temp),spa['high_speed'],spa['medium_speed'],spa['low_speed'],downforce_selection,spa["length"],float(factor_deterioration),weather_selection)
                 print("Tu estrategia es",result)
             elif selected_circuit == 'INTERLAGOS':
-                result = estrategia_optima(interlagos["laps"],int(asphalt_temp),int(ambient_temp),interlagos['high_speed'],interlagos['medium_speed'],interlagos['low_speed'],downforce_selection,interlagos["length"],float(factor_deterioration))
+                result = estrategia_optima(interlagos["laps"],int(asphalt_temp),int(ambient_temp),interlagos['high_speed'],interlagos['medium_speed'],interlagos['low_speed'],downforce_selection,interlagos["length"],float(factor_deterioration),weather_selection)
                 print("Tu estrategia es",result)            
             elif selected_circuit == 'SUZUKA':
-                result = estrategia_optima(suzuka["laps"],int(asphalt_temp),int(ambient_temp),suzuka['high_speed'],suzuka['medium_speed'],suzuka['low_speed'],downforce_selection,suzuka["length"],float(factor_deterioration))
+                result = estrategia_optima(suzuka["laps"],int(asphalt_temp),int(ambient_temp),suzuka['high_speed'],suzuka['medium_speed'],suzuka['low_speed'],downforce_selection,suzuka["length"],float(factor_deterioration),weather_selection)
                 print("Tu estrategia es",result)
             return redirect(url_for('final_strategy'))
         
