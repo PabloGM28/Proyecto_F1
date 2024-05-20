@@ -63,6 +63,7 @@ def estrategia_optima(laps,track_temp, air_temp, high_speed_turns, medium_speed_
     estrategia_ganadora_vueltas = estrategias
     #print(diccionario_vueltas_por_tanda)
     #print(estrategia_ganadora)
+    
     return estrategia_ganadora
  
 print(estrategia_optima(50,40,35,5,4,3,"medium",6.03,0.4,"sunny"))
