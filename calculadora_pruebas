@@ -41,17 +41,18 @@ def estrategia_optima(laps,track_temp, air_temp, high_speed_turns, medium_speed_
                     vueltas_carrera = minimos.encontrar_minimos(matriz_tiempos,laps)
                     
                     suma = 0 # inicializo a cero el tiempo de carrera:
-                    vueltas_tanda = np.zeros(1,)
+                    vueltas_tanda = np.zeros((1,4))
                     contador = 0
                     for valor, (i,j) in vueltas_carrera:
                         #print(valor)
                         suma = suma + valor #tiempo total siguiendo la estrategia de ahora: "elemento" es una tupla del tipo ('neumatico','neumatico',...)
                         #print(i)
-                        #vueltas_tanda[i] = vueltas_tanda[i]+1
+                        vueltas_tanda[0,i] += 1
                     suma = suma + len(estrategia)    
                     #diccionario_vueltas_por_tanda.append(vueltas_tanda)
                     #print(len(estrategia))
                     diccionario_estrategias[estrategia] = matriz_tiempos
+                    diccionario_vueltas_por_tanda[estrategia] = vueltas_tanda
                     tiempos_estrategia.append(suma)       
                     paradas.append(len(estrategia))
 
@@ -59,7 +60,8 @@ def estrategia_optima(laps,track_temp, air_temp, high_speed_turns, medium_speed_
     #print(paradas)
     estrategias = list(diccionario_estrategias.keys())
     estrategia_ganadora = estrategias[tiempos_estrategia.index(min(tiempos_estrategia))]
-
+    #estrategia_ganadora_vueltas = [tiempos_estrategia.index(min(tiempos_estrategia))]
+    print(diccionario_vueltas_por_tanda)
     #print(estrategia_ganadora)
     return estrategia_ganadora
  
