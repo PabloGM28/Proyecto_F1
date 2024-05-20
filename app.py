@@ -9,7 +9,6 @@ jeddah= {"high_speed":16,"medium_speed":9,"low_speed":2,"length":6.175,"laps":50
 interlagos= {"high_speed":6,"medium_speed":9,"low_speed":0,"length":4.309,"laps":71}
 spa= {"high_speed":7,"medium_speed":9,"low_speed":3,"length":7.004,"laps":44}
 suzuka= {"high_speed":11,"medium_speed":4,"low_speed":3,"length":5.807,"laps":53}
-new_track= {"high_speed":1,"medium_speed":1,"low_speed":1,"length":1,"laps":}
 
 # Lista para almacenar la selección de neumáticos
 tyre_selection = []
@@ -30,6 +29,7 @@ corner_fast = ""
 factor_deterioration = ""
 
 selected_circuit = ""
+
 
 @app.route('/')
 def index():
@@ -119,6 +119,7 @@ def process_length_and_redirect():
         print("Longitud del circuito:", length_km, "Km")
         print("Número de vueltas:", laps)
         # Redirigir al usuario a la página "downforce.html"
+        result= result = estrategia_optima (int(laps),int(asphalt_temp),int(ambient_temp),int(corner_fast),int(corner_medium),int(corner_slow),downforce_selection,length_km,int(factor_deterioration),weather_selection)
         return redirect(url_for('final_strategy'))
 
 # Ruta para procesar la selección de downforce y redirigir al usuario a "corners"
@@ -147,18 +148,12 @@ def process_deterioration_and_redirect():
             # Redirigir al usuario a la página 'corners'
             return redirect(url_for('corners'))
         else:
-            if selected_circuit == 'ALBERT PARK'  
-
-            elif selected_circuit == 'BAHRAIN':
-                result = estrategia_optima (bahrain["vueltas"],asphalt_temp,ambient_temp,bahrain['high_speed'],)
-
+            if selected_circuit == 'ALBERT PARK':
+                result = estrategia_optima (albert_park['laps'],int(asphalt_temp),int(ambient_temp),albert_park['high_speed'],albert_park['medium_speed'],albert_park['low_speed'],downforce_selection,albert_park['length'],float(factor_deterioration),weather_selection)
+                print("Tu estrategia es",result)
             elif selected_circuit == 'JEDDAH':
-                result=estrategia_optima (laps)
-            elif selected_circuit == 'INTERLAGOS':
-                result=estrategia_optima (laps)
-            elif selected_circuit == 'SPA':
-                result = estrategia_optima (laps)
-            # Redirigir al usuario a la página 'final_strategy'
+                result = estrategia_optima (jeddah['laps'],int(asphalt_temp),int(ambient_temp),jeddah['high_speed'],jeddah['medium_speed'],jeddah['low_speed'],downforce_selection,jeddah['length'],float(factor_deterioration),weather_selection)
+                print("Tu etrategia es", result)
             return redirect(url_for('final_strategy'))
         
 
