@@ -30,6 +30,7 @@ factor_deterioration = ""
 
 selected_circuit = ""
 
+result = []
 
 @app.route('/')
 def index():
@@ -49,7 +50,7 @@ def length():
 
 @app.route('/final_strategy')
 def final_strategy():
-    return render_template('final_strategy.html')
+    return render_template('final_strategy.html', result = result)
 
 @app.route('/downforce')
 def downforce():
@@ -112,14 +113,15 @@ def process_weather_selection_and_redirect():
 def process_length_and_redirect():
     if request.method == 'POST':
         # Obtener la selección de longitud y vueltas del formulario
-        global length_km, laps
+        global length_km, laps,result
         length_km = request.form['length_km']
         laps = request.form['laps']
         # Imprimir la selección del usuario
         print("Longitud del circuito:", length_km, "Km")
         print("Número de vueltas:", laps)
         # Redirigir al usuario a la página "downforce.html"
-        result= result = estrategia_optima (int(laps),int(asphalt_temp),int(ambient_temp),int(corner_fast),int(corner_medium),int(corner_slow),downforce_selection,float(length_km),float(factor_deterioration),weather_selection)
+        result= estrategia_optima (int(laps),int(asphalt_temp),int(ambient_temp),int(corner_fast),int(corner_medium),int(corner_slow),downforce_selection,float(length_km),float(factor_deterioration),weather_selection)
+        print("Tu resultado", result)
         return redirect(url_for('final_strategy'))
 
 # Ruta para procesar la selección de downforce y redirigir al usuario a "corners"
@@ -138,7 +140,7 @@ def process_downforce_and_redirect():
 def process_deterioration_and_redirect():
     if request.method == 'POST':
         # Obtener la selección del factor de degradación
-        global factor_deterioration
+        global factor_deterioration,result
         factor_deterioration = request.form['factor_deterioration']
         # Imprimir factor de degradación
         print ("El factor de degradación es:", factor_deterioration)
@@ -165,8 +167,8 @@ def process_deterioration_and_redirect():
             elif selected_circuit == 'SUZUKA':
                 result = estrategia_optima(suzuka["laps"],int(asphalt_temp),int(ambient_temp),suzuka['high_speed'],suzuka['medium_speed'],suzuka['low_speed'],downforce_selection,suzuka["length"],float(factor_deterioration),weather_selection)
                 print("Tu estrategia es",result)
-            return redirect(url_for('final_strategy'))
-        
+            return render_template('final_strategy.html', result=result)
+
 
 # Ruta para procesar la selección de esquinas y redirigir al usuario a la página siguiente
 @app.route('/process_corners_and_redirect', methods=['POST'])
