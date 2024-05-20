@@ -37,7 +37,7 @@ def estrategia_optima(laps,track_temp, air_temp, high_speed_turns, medium_speed_
                     # Para cada estrategia, relleno la matriz con tantas filas como neumaticos se vayan a usar y los tiempos de estos:
                     for neumatico in estrategia:            
                         matriz_tiempos.append(tiempo_neumatico[neumatico]) # Llenamos la matriz con los tiempos de neumaticos en orden
-                        print(matriz_tiempos) 
+                        #print(matriz_tiempos) 
                     vueltas_carrera = minimos.encontrar_minimos(matriz_tiempos,laps)
                     
                     suma = 0 # inicializo a cero el tiempo de carrera:
@@ -69,7 +69,7 @@ def estrategia_optima(laps,track_temp, air_temp, high_speed_turns, medium_speed_
     
     return estrategia_ganadora, estrategia_ganadora_vueltas
  
-print(estrategia_optima(25,40,35,5,4,3,"medium",6.03,0.1,"sunny"))
+#print(estrategia_optima(25,40,35,5,4,3,"medium",6.03,0.1,"sunny"))
 
 
 
