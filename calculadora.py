@@ -5,9 +5,9 @@ import combinatoria
 import minimos
 
 def estrategia_optima(laps,track_temp, air_temp, high_speed_turns, medium_speed_turns, low_speed_turns, wing_load, length, abrassion,condition):
-    vida_esperada = {"soft":5,"medium":15,"hard":25}
+    vida_esperada = {"soft":8,"medium":15,"hard":30}
     degradacion_por_tipos = degradacion.degradation(track_temp, air_temp, high_speed_turns, medium_speed_turns, low_speed_turns, wing_load, length, abrassion,condition)
-    velocidades = {"soft":1,"medium":1.1,"hard":1.2}
+    velocidades = {"soft":1.2,"medium":1.1,"hard":1}
     types = ["soft","medium","hard"]
     tiempo_neumatico = {"soft":np.zeros((1,laps)),"medium":np.zeros((1,laps)),"hard":np.zeros((1,laps))}
 
@@ -48,7 +48,7 @@ def estrategia_optima(laps,track_temp, air_temp, high_speed_turns, medium_speed_
                         suma = suma + valor #tiempo total siguiendo la estrategia de ahora: "elemento" es una tupla del tipo ('neumatico','neumatico',...)
                         #print(i)
                         vueltas_tanda[0,i] = int(vueltas_tanda[0,i] + 1)
-                    #suma = suma + (len(estrategia)-1)  
+                    suma = suma + (len(estrategia)-1)*10  #sirve para penalizar el tiempo por parada.
                     #print(suma,len(estrategia))
 
                     #diccionario_vueltas_por_tanda.append(vueltas_tanda)
@@ -63,13 +63,11 @@ def estrategia_optima(laps,track_temp, air_temp, high_speed_turns, medium_speed_
     estrategias = list(diccionario_estrategias.keys())
     estrategia_ganadora = estrategias[tiempos_estrategia.index(min(tiempos_estrategia))]
     estrategia_ganadora_vueltas = list(diccionario_vueltas_por_tanda[estrategia_ganadora])
-
-    #print(diccionario_vueltas_por_tanda)
     #print(estrategia_ganadora_vueltas)
     
     return estrategia_ganadora, estrategia_ganadora_vueltas
  
-print(estrategia_optima(25,40,35,5,4,3,"medium",6.03,0.1,"sunny"))
+#print(estrategia_optima(23,40,35,5,4,3,"medium",6.03,0.1,"sunny"))
 
 
 
