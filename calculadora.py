@@ -62,14 +62,14 @@ def estrategia_optima(laps,track_temp, air_temp, high_speed_turns, medium_speed_
     #print(paradas)
     estrategias = list(diccionario_estrategias.keys())
     estrategia_ganadora = estrategias[tiempos_estrategia.index(min(tiempos_estrategia))]
-    estrategia_ganadora_vueltas = diccionario_vueltas_por_tanda[estrategia_ganadora]
+    estrategia_ganadora_vueltas = list(diccionario_vueltas_por_tanda[estrategia_ganadora])
 
     #print(diccionario_vueltas_por_tanda)
     #print(estrategia_ganadora_vueltas)
     
     return estrategia_ganadora, estrategia_ganadora_vueltas
  
-#print(estrategia_optima(25,40,35,5,4,3,"medium",6.03,0.1,"sunny"))
+print(estrategia_optima(25,40,35,5,4,3,"medium",6.03,0.1,"sunny"))
 
 
 
